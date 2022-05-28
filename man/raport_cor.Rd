@@ -27,4 +27,5 @@ Funkcja tworząca automatyczne fragmenty raportu z analizy korelacji.
 data(diamonds, package = "ggplot2")
 r <- cor.test(diamonds$carat, diamonds$price)
 raport_cor(r, "masą a ceną brylantu")
+
 }

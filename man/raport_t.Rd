@@ -9,7 +9,7 @@ raport_t(wynik_testu, miedzy, alpha = 0.05)
 \arguments{
 \item{wynik_testu}{\code{\link[stats]{t.test}}.}
 
-\item{miedzy}{character. Uzupełnia zdanie „Przeprowadzono analizę korelacji między XXX.”}
+\item{miedzy}{character. Uzupełnia zdanie „Celem sprawdzenia istotności różnicy między XXX.”}
 
 \item{alpha}{numeric. Punkt odcięcia dla istotności statystycznej.}
 }
@@ -23,6 +23,7 @@ Celem sprawdzenia istotności różnicy między długością płatków u
 Funkcja tworząca automatyczne fragmenty raportu z testu t-Studenta.
 }
 \examples{
-t <- t.test(iris[iris$Species == "setosa",]$Petal.Length, iris[iris$Species == "versicolor",]$Petal.Length)
+t <- t.test(iris[iris$Species == "setosa", ]$Petal.Length, iris[iris$Species == "versicolor", ]$Petal.Length)
 raport_t(t, "długością płatków u różnych gatunków irysów")
+
 }

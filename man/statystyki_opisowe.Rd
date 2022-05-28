@@ -57,8 +57,10 @@ na dodanie zmiennych grupujących.
 \examples{
 statystyki_opisowe(iris, "ilosciowa", Sepal.Width)
 statystyki_opisowe(iris, "ilosciowa", where(is.numeric)) # z czasownikiem tidyselect
+
 data(diamonds, package = "ggplot2")
 # wiele kolumn do opisania
 statystyki_opisowe_by(diamonds, "porzadkowa", group = clarity, price, carat)
 statystyki_opisowe_by(diamonds, "kategorialna", c(cut, clarity), color)
+
 }

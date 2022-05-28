@@ -25,4 +25,5 @@ Funkcja tworząca automatyczne fragmenty raportu z analizy regresji.
 data(diamonds, package = "ggplot2")
 llm <- lm(price ~ carat, diamonds)
 raport_lm(llm, "masą brylantu a jego ceną")
+
 }

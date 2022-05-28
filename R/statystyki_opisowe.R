@@ -28,7 +28,7 @@
 #'
 #' @import dplyr
 #' @importFrom questionr freq
-#' @importFrom moments skewness kurtosis
+#' @importFrom agricolae skewness kurtosis
 #' @importFrom rstatix add_significance shapiro_test
 #' @importFrom tidyr pivot_longer
 #'
@@ -90,11 +90,11 @@ statystyki_opisowe <- function(df, type = c("kategorialna", "porzadkowa", "ilosc
           N = function(x) sum(!is.na(x)),
           M = function(x) mean(x, na.rm = TRUE),
           SD = function(x) sd(x, na.rm = TRUE),
-          A = function(x) moments::skewness(x, na.rm = TRUE),
-          K = function(x) moments::kurtosis(x, na.rm = TRUE),
+          A = function(x) agricolae::skewness(x, na.rm = TRUE),
+          K = function(x) agricolae::kurtosis(x, na.rm = TRUE),
           `NA` = function(x) sum(is.na(x))
         ), .names = "{.fn}")),
-      test_shapiro_wilka = df_temp |> # test normalności Shapiro-Wilka
+      test_shapiro_wilka = df_temp |>
         tidyr::pivot_longer(dplyr::everything(), names_to = "var", values_to = "val") |>
         dplyr::group_by(var) |>
         rstatix::shapiro_test(val) |>

@@ -9,7 +9,7 @@ raport_U(wynik_testu, miedzy, alpha = 0.05)
 \arguments{
 \item{wynik_testu}{\code{\link[coin:wilcox_test]{coin::wilcox_test}}.}
 
-\item{miedzy}{character. Uzupełnia zdanie „Przeprowadzono analizę korelacji między XXX.”}
+\item{miedzy}{character. Uzupełnia zdanie „Celem sprawdzenia istotności różnicy między XXX.”}
 
 \item{alpha}{numeric. Punkt odcięcia dla istotności statystycznej.}
 }
@@ -23,6 +23,9 @@ Funkcja tworząca automatyczne fragmenty raportu z testu U Manna-Whitneya.
 }
 \examples{
 library(dplyr)
-U <- iris \%>\% filter(Species \%in\% c("setosa", "versicolor")) \%>\% coin::wilcox_test(Sepal.Length ~ Species, .)
+U <- iris \%>\%
+  filter(Species \%in\% c("setosa", "versicolor")) \%>\%
+  coin::wilcox_test(Sepal.Length ~ Species, .)
 raport_U(U, "długością płatków u różnych gatunków irysów")
+
 }

@@ -35,7 +35,7 @@
 #' @examples
 #' statystyki_opisowe(iris, "ilosciowa", Sepal.Width)
 #' statystyki_opisowe(iris, "ilosciowa", where(is.numeric)) # z czasownikiem tidyselect
-
+#'
 statystyki_opisowe <- function(df, type = c("kategorialna", "porzadkowa", "ilosciowa"), ...) {
   if (!type %in% c("kategorialna", "porzadkowa", "ilosciowa")) stop("Skala może by\u0107 wy\u0142\u0105cznie \"kategorialna\", \"porzadkowa\" albo \"ilosciowa\".")
 
@@ -113,7 +113,7 @@ statystyki_opisowe <- function(df, type = c("kategorialna", "porzadkowa", "ilosc
 #' # wiele kolumn do opisania
 #' statystyki_opisowe_by(diamonds, "porzadkowa", group = clarity, price, carat)
 #' statystyki_opisowe_by(diamonds, "kategorialna", c(cut, clarity), color)
-
+#'
 statystyki_opisowe_by <- function(df, type = c("kategorialna", "porzadkowa", "ilosciowa"), group, ...) { # jw. tylko ze zmienną grupującą
   group <- vapply(substitute(group), deparse, "vector") # por. vector_to_char()
   if (length(group) > 1) group <- group[2:length(group)]

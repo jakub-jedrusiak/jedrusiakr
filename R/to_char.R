@@ -16,7 +16,7 @@
 #' @examples
 #' vector_to_char(c(plec, wiek))
 #' vector_to_char(c(plec, "wiek")) # dopuszczalne, niezalecane
-
+#'
 vector_to_char <- function(vctr_of_names) {
   vctr_of_names <- vapply(substitute(vctr_of_names), deparse, "vector")
   if (length(vctr_of_names) > 1) vctr_of_names <- eval(vctr_of_names)[2:length(vctr_of_names)] # usuwa "c", które pojawia się jako pierwszy element wektora, jeśli podano więcej niż jedną nazwę
@@ -28,5 +28,5 @@ vector_to_char <- function(vctr_of_names) {
 #' @export
 #' @examples
 #' #' name_to_char(plec)
-
+#'
 name_to_char <- function(name) deparse(substitute(name))

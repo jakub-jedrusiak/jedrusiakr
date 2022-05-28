@@ -90,8 +90,8 @@ statystyki_opisowe <- function(df, type = c("kategorialna", "porzadkowa", "ilosc
           N = function(x) sum(!is.na(x)),
           M = function(x) mean(x, na.rm = TRUE),
           SD = function(x) sd(x, na.rm = TRUE),
-          A = function(x) agricolae::skewness(x, na.rm = TRUE),
-          K = function(x) agricolae::kurtosis(x, na.rm = TRUE),
+          A = function(x) agricolae::skewness(x),
+          K = function(x) agricolae::kurtosis(x),
           `NA` = function(x) sum(is.na(x))
         ), .names = "{.fn}")),
       test_shapiro_wilka = df_temp |>

@@ -21,12 +21,13 @@
 raport_t <- function(wynik_testu, miedzy, alpha = 0.05) {
   p <- wynik_testu$p.value
   t <- abs(wynik_testu$statistic)
-  dM <- abs(wynik_testu$estimate[[1]] - wynik_testu$estimate[[2]])
   df <- wynik_testu$parameter
   typ <- case_when(
     wynik_testu$method %in% c("Welch Two Sample t-test", " Two Sample t-test") ~ "t-Studenta dla prób niezależnych",
     wynik_testu$method == "Paired t-test" ~ "t-Studenta dla prób zależnych"
   )
+  if (typ == "t-Studenta dla prób niezależnych") dM <- abs(wynik_testu$estimate[[1]] - wynik_testu$estimate[[2]])
+  if (typ == "t-Studenta dla prób zależnych") dM <- abs(wynik_testu$estimate)
 
   elem1 <- paste0("Celem sprawdzenia istotności różnicy między ", miedzy, " wykonano test ", typ, ". Test wykazał, że różnica w średnich ($\u0394M ", apa_num_pl(dM), "$) między grupami jest ")
   ifelse(p < alpha,

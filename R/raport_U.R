@@ -25,7 +25,7 @@ raport_U <- function(wynik_testu, miedzy, alpha = 0.05) {
   p <- pvalue(wynik_testu)
   Z <- abs(statistic(wynik_testu))
 
-  elem1 <- paste0("Celem sprawdzenia istotności różnicy między ", miedzy, " wykonano test U Manna-Whitneya. Test wykazał, że różnica jest ")
+  elem1 <- paste0("Celem sprawdzenia istotności różnicy między ", miedzy, " wykonano test $U$ Manna-Whitneya. Test wykazał, że różnica jest ")
   ifelse(p < alpha,
     elem2 <- paste0("istotna statystycznie "),
     elem2 <- paste0("nieistotna statystycznie ")

@@ -23,17 +23,17 @@ raport_t <- function(wynik_testu, miedzy, alpha = 0.05) {
   t <- abs(wynik_testu$statistic)
   df <- wynik_testu$parameter
   typ <- case_when(
-    wynik_testu$method %in% c("Welch Two Sample t-test", " Two Sample t-test") ~ "t-Studenta dla prób niezależnych",
-    wynik_testu$method == "Paired t-test" ~ "t-Studenta dla prób zależnych"
+    wynik_testu$method %in% c("Welch Two Sample t-test", " Two Sample t-test") ~ "$t$-Studenta dla prób niezależnych",
+    wynik_testu$method == "Paired t-test" ~ "$t$-Studenta dla prób zależnych"
   )
-  if (typ == "t-Studenta dla prób niezależnych") dM <- abs(wynik_testu$estimate[[1]] - wynik_testu$estimate[[2]])
-  if (typ == "t-Studenta dla prób zależnych") dM <- abs(wynik_testu$estimate)
+  if (typ == "$t$-Studenta dla prób niezależnych") dM <- abs(wynik_testu$estimate[[1]] - wynik_testu$estimate[[2]])
+  if (typ == "$t$-Studenta dla prób zależnych") dM <- abs(wynik_testu$estimate)
 
   elem1 <- paste0("Celem sprawdzenia istotności różnicy między ", miedzy, " wykonano test ", typ, ". Test wykazał, że różnica w średnich ($\u0394M ", apa_num_pl(dM), "$) między grupami jest ")
   ifelse(p < alpha,
     elem2 <- paste0("istotna statystycznie "),
     elem2 <- paste0("nieistotna statystycznie ")
   )
-  elem3 <- paste0("($t(", apa_num_pl(df, add_equals = FALSE, digits = 2L), ") ", apa_num_pl(t), "$; $p ", print_p_pl(p), "$).")
+  elem3 <- paste0("($t(", apa_num_pl(df, add_equals = FALSE), ") ", apa_num_pl(t), "$; $p ", print_p_pl(p), "$).")
   paste0(elem1, elem2, elem3)
 }

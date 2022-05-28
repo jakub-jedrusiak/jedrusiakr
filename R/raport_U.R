@@ -3,7 +3,7 @@
 #' Funkcja tworząca automatyczne fragmenty raportu z testu U Manna-Whitneya.
 #'
 #' @param wynik_testu \code{\link[coin:wilcox_test]{coin::wilcox_test}}.
-#' @param miedzy character. Uzupełnia zdanie „Przeprowadzono analizę korelacji między XXX.”
+#' @param miedzy character. Uzupełnia zdanie „Celem sprawdzenia istotności różnicy między XXX.”
 #' @param alpha numeric. Punkt odcięcia dla istotności statystycznej.
 #'
 #' @export
@@ -23,7 +23,7 @@
 #'
 raport_U <- function(wynik_testu, miedzy, alpha = 0.05) {
   p <- pvalue(wynik_testu)
-  Z <- abs(statistic(U))
+  Z <- abs(statistic(wynik_testu))
 
   elem1 <- paste0("Celem sprawdzenia istotności różnicy między ", miedzy, " wykonano test U Manna-Whitneya. Test wykazał, że różnica jest ")
   ifelse(p < alpha,

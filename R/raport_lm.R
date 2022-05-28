@@ -28,12 +28,12 @@ raport_lm <- function(lm, miedzy, alpha = 0.05) {
     round() |>
     paste0("%")
 
-  elem1 <- paste0("Celem sprawdzenia zależności między ", miedzy, ", przeprowadzono analizę regresji. ")
+  elem1 <- paste0("Celem sprawdzenia zależności między ", miedzy, " przeprowadzono analizę regresji. ")
   ifelse(p < alpha,
     elem2 <- paste0("Model okazał się istotny statystycznie "),
     elem2 <- paste0("Model okazał się nieistotny statystycznie ")
   )
-  elem3 <- paste0("($F(", df1, ";", df2, ") ", apa_num_pl(f, 2L), "$; $p ", print_p_pl(p), "$)")
+  elem3 <- paste0("($F(", df1, ", ", df2, ") ", apa_num_pl(f, 2L), "$; $p ", print_p_pl(p), "$)")
   ifelse(p < alpha,
     elem4 <- paste0(" i wyjaśnia ", r2, " wariancji."),
     elem4 <- "."

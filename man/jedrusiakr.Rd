@@ -8,6 +8,14 @@
 \description{
 A set of some random tools I created for myself to use.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/kuba58426/jedrusiakr}
+  \item Report bugs at \url{https://github.com/kuba58426/jedrusiakr/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Jakub Jędrusiak \email{jakub@s-el.pl}
 

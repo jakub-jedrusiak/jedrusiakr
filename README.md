@@ -1,14 +1,14 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# jedrusiakr
+# jedrusiakr: Random Tools I Made and Use
 
 <!-- badges: start -->
 
 [![R-CMD-check](https://github.com/kuba58426/jedrusiakr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kuba58426/jedrusiakr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The goal of jedrusiakr is to …
+A set of some random tools I created for myself to use.
 
 ## Installation
 
@@ -22,36 +22,75 @@ devtools::install_github("kuba58426/jedrusiakr")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Summary statistics:
 
 ``` r
 library(jedrusiakr)
-## basic example code
+statystyki_opisowe_by(iris, "ilosciowa", Species, where(is.numeric))
+#> $setosa
+#> $setosa$opisowe
+#> # A tibble: 4 × 7
+#>   var              N     M    SD      A      K  `NA`
+#>   <chr>        <int> <dbl> <dbl>  <dbl>  <dbl> <int>
+#> 1 Petal.Length    50 1.46  0.174 0.106   1.02      0
+#> 2 Petal.Width     50 0.246 0.105 1.25    1.72      0
+#> 3 Sepal.Length    50 5.01  0.352 0.120  -0.253     0
+#> 4 Sepal.Width     50 3.43  0.379 0.0412  0.955     0
+#> 
+#> $setosa$test_shapiro_wilka
+#> # A tibble: 4 × 4
+#>   var          statistic           p p.signif
+#>   <chr>            <dbl>       <dbl> <chr>   
+#> 1 Petal.Length     0.955 0.0548      ns      
+#> 2 Petal.Width      0.800 0.000000866 ****    
+#> 3 Sepal.Length     0.978 0.460       ns      
+#> 4 Sepal.Width      0.972 0.272       ns      
+#> 
+#> 
+#> $versicolor
+#> $versicolor$opisowe
+#> # A tibble: 4 × 7
+#>   var              N     M    SD       A       K  `NA`
+#>   <chr>        <int> <dbl> <dbl>   <dbl>   <dbl> <int>
+#> 1 Petal.Length    50  4.26 0.470 -0.607   0.0479     0
+#> 2 Petal.Width     50  1.33 0.198 -0.0312 -0.410      0
+#> 3 Sepal.Length    50  5.94 0.516  0.105  -0.533      0
+#> 4 Sepal.Width     50  2.77 0.314 -0.363  -0.366      0
+#> 
+#> $versicolor$test_shapiro_wilka
+#> # A tibble: 4 × 4
+#>   var          statistic      p p.signif
+#>   <chr>            <dbl>  <dbl> <chr>   
+#> 1 Petal.Length     0.966 0.158  ns      
+#> 2 Petal.Width      0.948 0.0273 *       
+#> 3 Sepal.Length     0.978 0.465  ns      
+#> 4 Sepal.Width      0.974 0.338  ns      
+#> 
+#> 
+#> $virginica
+#> $virginica$opisowe
+#> # A tibble: 4 × 7
+#>   var              N     M    SD      A       K  `NA`
+#>   <chr>        <int> <dbl> <dbl>  <dbl>   <dbl> <int>
+#> 1 Petal.Length    50  5.55 0.552  0.549 -0.154      0
+#> 2 Petal.Width     50  2.03 0.275 -0.129 -0.602      0
+#> 3 Sepal.Length    50  6.59 0.636  0.118  0.0329     0
+#> 4 Sepal.Width     50  2.97 0.322  0.366  0.706      0
+#> 
+#> $virginica$test_shapiro_wilka
+#> # A tibble: 4 × 4
+#>   var          statistic      p p.signif
+#>   <chr>            <dbl>  <dbl> <chr>   
+#> 1 Petal.Length     0.962 0.110  ns      
+#> 2 Petal.Width      0.960 0.0870 ns      
+#> 3 Sepal.Length     0.971 0.258  ns      
+#> 4 Sepal.Width      0.967 0.181  ns
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Autoreporting in Polish:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+library(jedrusiakr)
+raport_lm(lm(Sepal.Width ~ Sepal.Length, iris), "między szerokością a długością płatków irysów")
+#> [1] "Celem sprawdzenia zależności między między szerokością a długością płatków irysów przeprowadzono analizę regresji. Model okazał się nieistotny statystycznie ($F(1, 148) = 2,07$; $p = 0,152$)."
 ```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.

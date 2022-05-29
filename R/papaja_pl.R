@@ -34,12 +34,12 @@
 #' @export
 
 print_p_pl <- function(x, digits = 3L, na_string = "", add_equals = TRUE) {
-  apa_num(x, digits = digits, gt1 = FALSE, zero = FALSE, na_string = na_string, add_equals = add_equals, decimal.mark = ",", big.mark = " ")
+  apa_num(x, digits = digits, gt1 = FALSE, zero = FALSE, na_string = na_string, add_equals = add_equals, decimal.mark = ",", big.mark = " ", drop0trailing = TRUE)
 }
 
 #' @describeIn papaja_pl Liczba
 #' @export
 
 apa_num_pl <- function(x, digits = 2L, gt1 = TRUE, zero = FALSE, na_string = "", add_equals = TRUE, decimal.mark = ",", big.mark = " ") {
-  apa_num(x, digits = digits, gt1 = gt1, zero = zero, na_string = na_string, add_equals = add_equals, decimal.mark = ",", big.mark = " ")
+  apa_num(x, digits = digits, gt1 = gt1, zero = zero, na_string = na_string, add_equals = add_equals, decimal.mark = decimal.mark, big.mark = big.mark, drop0trailing = TRUE)
 }

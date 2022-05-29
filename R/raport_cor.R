@@ -23,12 +23,12 @@ raport_cor <- function(wynik_testu, miedzy, method = "pearson", alpha = 0.05) {
   p <- wynik_testu$p.value
   r <- wynik_testu$estimate
   r_interp <- case_when(
-    abs(r) < 0.2 ~ "bardzo słabej",
-    abs(r) < 0.4 ~ "słabej",
+    abs(r) < 0.2 ~ "bardzo s\u0142abej",
+    abs(r) < 0.4 ~ "s\u0142abej",
     abs(r) < 0.6 ~ "umiarkowanej",
     abs(r) < 0.8 ~ "wysokiej",
     abs(r) < 1 ~ "bardzo wysokiej",
-    abs(r) == 1 ~ "pełnej"
+    abs(r) == 1 ~ "pe\u0142nej"
   )
   znak <- ifelse(r > 0, "dodatniej", "ujemnej")
   typ <- case_when(
@@ -36,10 +36,10 @@ raport_cor <- function(wynik_testu, miedzy, method = "pearson", alpha = 0.05) {
     method == "spearman" ~ "Spearmana"
   )
 
-  elem1 <- paste0("Przeprowadzono analizę korelacji ", typ, " między ", miedzy, ". ")
+  elem1 <- paste0("Przeprowadzono analiz\u0119 korelacji ", typ, " mi\u0119dzy ", miedzy, ". ")
   ifelse(p < alpha,
-    elem2 <- paste0("Test wykazał istnienie istotnej, ", r_interp, ", ", znak, " korelacji między zmiennymi "),
-    elem2 <- paste0("Test wykazał brak istotnej korelacji między zmiennymi ")
+    elem2 <- paste0("Test wykaza\u0142 istnienie istotnej, ", r_interp, ", ", znak, " korelacji mi\u0119dzy zmiennymi "),
+    elem2 <- paste0("Test wykaza\u0142 brak istotnej korelacji mi\u0119dzy zmiennymi ")
   )
   elem3 <- paste0("($r ", apa_num_pl(r), "$; $p ", print_p_pl(p), "$).")
   paste0(elem1, elem2, elem3)

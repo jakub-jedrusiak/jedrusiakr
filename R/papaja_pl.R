@@ -4,7 +4,11 @@
 #'
 #' @import papaja
 #' @inheritParams papaja::apa_num
+#' @inheritParams papaja::print_p
 #' @inheritDotParams base::formatC -x
+#' @inheritDotParams papaja::apa_num
+#' @param decimal.mark the character to be used to indicate the numeric decimal point.
+#' @param big.mark character; if not empty used as mark between every big.interval decimals before (hence big) the decimal point.
 
 # wiodące zera i przecinki w papaja::apa_print()
 # adjust_reporting_style <- function(x) {
@@ -40,6 +44,6 @@ print_p_pl <- function(x, digits = 3L, na_string = "", add_equals = TRUE) {
 #' @describeIn papaja_pl Liczba
 #' @export
 
-apa_num_pl <- function(x, digits = 2L, gt1 = TRUE, zero = FALSE, na_string = "", add_equals = TRUE, decimal.mark = ",", big.mark = " ") {
+apa_num_pl <- function(x, digits = 2L, gt1 = TRUE, zero = FALSE, na_string = "", decimal.mark = ",", big.mark = " ", add_equals = TRUE, ...) {
   apa_num(x, digits = digits, gt1 = gt1, zero = zero, na_string = na_string, add_equals = add_equals, decimal.mark = decimal.mark, big.mark = big.mark, drop0trailing = TRUE)
 }

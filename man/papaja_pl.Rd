@@ -13,13 +13,16 @@ apa_num_pl(
   gt1 = TRUE,
   zero = FALSE,
   na_string = "",
-  add_equals = TRUE,
   decimal.mark = ",",
-  big.mark = " "
+  big.mark = " ",
+  add_equals = TRUE,
+  ...
 )
 }
 \arguments{
 \item{x}{Can be either a single value, vector, \code{matrix}, \code{data.frame}.}
+
+\item{digits}{Integer. The desired number of digits after the decimal point, passed on to \code{\link{formatC}}.}
 
 \item{na_string}{Character. String to print if any element of \code{x} is \code{NA}.}
 
@@ -33,20 +36,13 @@ omitted.}
 \item{zero}{Logical. Indicates if the statistic can, in principle, be 0. If
 \code{FALSE}, a string of the form \verb{< 0.001} is returned instead of 0.}
 
-\item{...}{
-  Arguments passed on to \code{\link[base:formatc]{base::formatC}}
-  \describe{
-    \item{\code{digits}}{the desired number of digits after the decimal
-    point (\code{format = "f"}) or \emph{significant} digits
-    (\code{format = "g"}, \code{= "e"} or \code{= "fg"}).
+\item{decimal.mark}{the character to be used to indicate the numeric decimal point.}
 
-    Default: 2 for integer, 4 for real numbers.  If less than 0,
-    the C default of 6 digits is used.  If specified as more than 50, 50
-    will be used with a warning unless \code{format = "f"} where it is
-    limited to typically 324. (Not more than 15--21 digits need be
-    accurate, depending on the OS and compiler used.  This limit is
-    just a precaution against segfaults in the underlying C runtime.)
-  }
+\item{big.mark}{character; if not empty used as mark between every big.interval decimals before (hence big) the decimal point.}
+
+\item{...}{
+  Arguments passed on to \code{\link[base:formatc]{base::formatC}}, \code{\link[papaja:apa_num]{papaja::apa_num}}
+  \describe{
     \item{\code{width}}{the total field width; if both \code{digits} and
     \code{width} are unspecified, \code{width} defaults to 1,
     otherwise to \code{digits + 1}.  \code{width = 0} will use
@@ -99,16 +95,11 @@ omitted.}
     \item{\code{mode}}{\code{"double"} (or \code{"real"}), \code{"integer"} or
     \code{"character"}.
     Default: Determined from the storage mode of \code{x}.}
-    \item{\code{big.mark}}{character; if not empty used as mark between every
-    \code{big.interval} decimals \emph{before} (hence \code{big}) the
-    decimal point.}
     \item{\code{big.interval}}{see \code{big.mark} above; defaults to 3.}
     \item{\code{small.mark}}{character; if not empty used as mark between every
     \code{small.interval} decimals \emph{after} (hence \code{small}) the
     decimal point.}
     \item{\code{small.interval}}{see \code{small.mark} above; defaults to 5.}
-    \item{\code{decimal.mark}}{the character to be used to indicate the numeric
-    decimal point.}
     \item{\code{preserve.width}}{string specifying if the string widths should
     be preserved where possible in those cases where marks
     (\code{big.mark} or \code{small.mark}) are added.  \code{"common"},

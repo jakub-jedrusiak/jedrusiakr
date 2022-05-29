@@ -26,20 +26,20 @@ raport_t <- function(wynik_testu, miedzy, alpha = 0.05) {
   t <- abs(wynik_testu$statistic)
   df <- wynik_testu$parameter
   typ <- case_when(
-    wynik_testu$method %in% c("Welch Two Sample t-test", " Two Sample t-test") ~ "$t$-Studenta dla prób niezależnych",
-    wynik_testu$method == "Paired t-test" ~ "$t$-Studenta dla prób zależnych"
+    wynik_testu$method %in% c("Welch Two Sample t-test", " Two Sample t-test") ~ "$t$-Studenta dla pr\u00f3b niezale\u017cnych",
+    wynik_testu$method == "Paired t-test" ~ "$t$-Studenta dla pr\u00f3b zale\u017cnych"
   )
-  if (typ == "$t$-Studenta dla prób niezależnych") {
+  if (typ == "$t$-Studenta dla pr\u00f3b niezale\u017cnych") {
     dM <- abs(wynik_testu$estimate[[1]] - wynik_testu$estimate[[2]])
     obiekt <- "grupami"
   }
-  if (typ == "$t$-Studenta dla prób zależnych"){
+  if (typ == "$t$-Studenta dla pr\u00f3b zale\u017cnych") {
     dM <- abs(wynik_testu$estimate)
     obiekt <- "zmiennymi"
-    }
+  }
 
 
-  elem1 <- paste0("Celem sprawdzenia istotności różnicy między ", miedzy, " wykonano test ", typ, ". Test wykazał, że różnica w średnich ($\u0394M ", apa_num_pl(dM), "$) między ", obiekt, " jest ")
+  elem1 <- paste0("Celem sprawdzenia istotno\u015bci r\u00f3\u017cnicy mi\u0119dzy ", miedzy, " wykonano test ", typ, ". Test wykaza\u0142, \u017ce r\u00f3\u017cnica w \u015brednich ($\u0394M ", apa_num_pl(dM), "$) mi\u0119dzy ", obiekt, " jest ")
   ifelse(p < alpha,
     elem2 <- paste0("istotna statystycznie "),
     elem2 <- paste0("nieistotna statystycznie ")

@@ -23,6 +23,7 @@ Imports: dplyr,
 Remotes: crsh/papaja
 RoxygenNote: 7.2.0
 Suggests: 
+    covr,
     ggplot2,
     knitr,
     rmarkdown,

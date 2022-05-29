@@ -23,7 +23,10 @@ Celem sprawdzenia istotności różnicy między długością płatków u
 Funkcja tworząca automatyczne fragmenty raportu z testu t-Studenta.
 }
 \examples{
-t <- t.test(iris[iris$Species == "setosa", ]$Petal.Length, iris[iris$Species == "versicolor", ]$Petal.Length)
+library(dplyr)
+t <- iris \%>\%
+  filter(Species \%in\% c("setosa", "versicolor")) \%>\%
+  t.test(Petal.Length ~ Species, .)
 raport_t(t, "długością płatków u różnych gatunków irysów")
 
 }

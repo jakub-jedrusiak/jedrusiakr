@@ -9,13 +9,7 @@
 #'
 #' @return Zwraca ciąg znaków lub nienazwany wektor ciągów znaków.
 #'
-#' @export
-#'
 #' @importFrom stringr str_remove_all
-#'
-#' @examples
-#' vector_to_char(c(plec, wiek))
-#' vector_to_char(c(plec, "wiek")) # dopuszczalne, niezalecane
 #'
 vector_to_char <- function(vctr_of_names) {
   vctr_of_names <- vapply(substitute(vctr_of_names), deparse, "vector")

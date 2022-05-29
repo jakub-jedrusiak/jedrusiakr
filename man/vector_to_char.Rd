@@ -28,9 +28,6 @@ cudzysłowach.
 }}
 
 \examples{
-vector_to_char(c(plec, wiek))
-vector_to_char(c(plec, "wiek")) # dopuszczalne, niezalecane
-
 #' name_to_char(plec)
 
 }

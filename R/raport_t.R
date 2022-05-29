@@ -15,7 +15,10 @@
 #'   Test wykazał, że różnica w średnich (ΔM = 2,798) między grupami jest
 #'   istotna statystycznie (t(62,1) = 39,5; p < 0,001).
 #' @examples
-#' t <- t.test(iris[iris$Species == "setosa", ]$Petal.Length, iris[iris$Species == "versicolor", ]$Petal.Length)
+#' library(dplyr)
+#' t <- iris %>%
+#'   filter(Species %in% c("setosa", "versicolor")) %>%
+#'   t.test(Petal.Length ~ Species, .)
 #' raport_t(t, "długością płatków u różnych gatunków irysów")
 #'
 raport_t <- function(wynik_testu, miedzy, alpha = 0.05) {

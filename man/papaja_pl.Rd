@@ -9,7 +9,7 @@ print_p_pl(x, digits = 3L, na_string = "", add_equals = TRUE)
 
 apa_num_pl(
   x,
-  digits = 3L,
+  digits = 2L,
   gt1 = TRUE,
   zero = FALSE,
   na_string = "",

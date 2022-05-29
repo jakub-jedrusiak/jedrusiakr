@@ -29,10 +29,17 @@ raport_t <- function(wynik_testu, miedzy, alpha = 0.05) {
     wynik_testu$method %in% c("Welch Two Sample t-test", " Two Sample t-test") ~ "$t$-Studenta dla prób niezależnych",
     wynik_testu$method == "Paired t-test" ~ "$t$-Studenta dla prób zależnych"
   )
-  if (typ == "$t$-Studenta dla prób niezależnych") dM <- abs(wynik_testu$estimate[[1]] - wynik_testu$estimate[[2]])
-  if (typ == "$t$-Studenta dla prób zależnych") dM <- abs(wynik_testu$estimate)
+  if (typ == "$t$-Studenta dla prób niezależnych") {
+    dM <- abs(wynik_testu$estimate[[1]] - wynik_testu$estimate[[2]])
+    obiekt <- "grupami"
+  }
+  if (typ == "$t$-Studenta dla prób zależnych"){
+    dM <- abs(wynik_testu$estimate)
+    obiekt <- "zmiennymi"
+    }
 
-  elem1 <- paste0("Celem sprawdzenia istotności różnicy między ", miedzy, " wykonano test ", typ, ". Test wykazał, że różnica w średnich ($\u0394M ", apa_num_pl(dM), "$) między grupami jest ")
+
+  elem1 <- paste0("Celem sprawdzenia istotności różnicy między ", miedzy, " wykonano test ", typ, ". Test wykazał, że różnica w średnich ($\u0394M ", apa_num_pl(dM), "$) między ", obiekt, " jest ")
   ifelse(p < alpha,
     elem2 <- paste0("istotna statystycznie "),
     elem2 <- paste0("nieistotna statystycznie ")

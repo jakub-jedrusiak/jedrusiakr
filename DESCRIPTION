@@ -25,7 +25,9 @@ RoxygenNote: 7.2.0
 Suggests: 
     ggplot2,
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 URL: https://github.com/kuba58426/jedrusiakr
 BugReports: https://github.com/kuba58426/jedrusiakr/issues
+Config/testthat/edition: 3

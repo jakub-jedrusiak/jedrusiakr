@@ -16,7 +16,6 @@ Imports: dplyr,
     papaja,
     questionr,
     tidyr,
-    stringr,
     agricolae,
     broom,
     coin
@@ -27,7 +26,9 @@ Suggests:
     ggplot2,
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    magrittr,
+    stringr
 VignetteBuilder: knitr
 URL: https://github.com/kuba58426/jedrusiakr
 BugReports: https://github.com/kuba58426/jedrusiakr/issues

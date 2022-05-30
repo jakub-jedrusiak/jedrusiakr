@@ -1,6 +1,6 @@
 Package: jedrusiakr
 Type: Package
-Title: Random Functions Useful to Me
+Title: Utilities for Statistics in Psychology
 Version: 0.2.1
 Authors@R: person("Jakub", "Jędrusiak", email = "jakub@s-el.pl", role = c("aut", "cre"))
 Description: Collection of some random functions mostly useful to me.
@@ -30,6 +30,6 @@ Suggests:
     magrittr,
     stringr
 VignetteBuilder: knitr
-URL: https://github.com/kuba58426/jedrusiakr
-BugReports: https://github.com/kuba58426/jedrusiakr/issues
+URL: https://github.com/jakub-jedrusiak/jedrusiakr
+BugReports: https://github.com/jakub-jedrusiak/jedrusiakr/issues
 Config/testthat/edition: 3

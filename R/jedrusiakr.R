@@ -1,4 +1,4 @@
-#' jedrusiakr: Random Tools I Made and Use
+#' jedrusiakr: Utilities for Statistics in Psychology
 #'
 #' A set of some random tools I created for myself to use.
 #'

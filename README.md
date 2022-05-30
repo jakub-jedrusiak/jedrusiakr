@@ -1,13 +1,13 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# jedrusiakr: Random Tools I Made and Use
+# jedrusiakr: Utilities for Statistics in Psychology
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/kuba58426/jedrusiakr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/kuba58426/jedrusiakr/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/jakub-jedrusiak/jedrusiakr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jakub-jedrusiak/jedrusiakr/actions/workflows/R-CMD-check.yaml)
 [![Codecov test
-coverage](https://codecov.io/gh/kuba58426/jedrusiakr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/kuba58426/jedrusiakr?branch=master)
+coverage](https://codecov.io/gh/jakub-jedrusiak/jedrusiakr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/jakub-jedrusiak/jedrusiakr?branch=master)
 <!-- badges: end -->
 
 A set of some random tools I created for myself to use.
@@ -19,7 +19,7 @@ You can install the development version of jedrusiakr from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("kuba58426/jedrusiakr")
+devtools::install_github("jakub-jedrusiak/jedrusiakr")
 ```
 
 ## Example

@@ -1,5 +1,3 @@
-centext("Tests of descriptive statistics functions")
-
 test_that("statystyki_opisowe for kategorialna and statystyki_opisowe_by work", {
   data(diamonds, package = "ggplot2")
   result <- statystyki_opisowe_by(diamonds, "kategorialna", c(cut, clarity), color)

@@ -1,5 +1,3 @@
-context("Tests of reporting")
-
 test_that("correlation reporting works", {
   data(diamonds, package = "ggplot2")
   r <- cor.test(diamonds$carat, diamonds$price)

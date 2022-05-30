@@ -1,3 +1,5 @@
+context("Tests of reporting")
+
 test_that("correlation reporting works", {
   data(diamonds, package = "ggplot2")
   r <- cor.test(diamonds$carat, diamonds$price)
@@ -53,4 +55,8 @@ test_that("Mann-Whitney test reporting works", {
   expected_result <- "Celem sprawdzenia istotności różnicy między długością płatków u różnych gatunków irysów wykonano test $U$ Manna-Whitneya. Test wykazał, że różnica jest istotna statystycznie ($Z = 7,47$; $p < 0,001$)."
 
   expect_equal(result, expected_result, ignore_attr = TRUE)
+})
+
+test_that("MSD works as expected", {
+  expect_equal(jedrusiakr::MSD(iris, Sepal.Length, Species == "setosa"), "$M = 5,01$; $SD = 0,35$")
 })

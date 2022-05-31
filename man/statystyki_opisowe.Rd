@@ -85,6 +85,8 @@ statystyki_opisowe_by(diamonds, "kategorialna", c(cut, clarity), color)
 
 data(diamonds, package = "ggplot2")
 opisz(head(diamonds), color, table, c(carat, price))
+
 data(diamonds, package = "ggplot2")
 opisz_by(head(diamonds, 100), cut, color, table, c(carat, price))
+
 }

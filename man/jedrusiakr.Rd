@@ -4,15 +4,15 @@
 \name{jedrusiakr}
 \alias{jedrusiakr}
 \alias{jedrusiakr-package}
-\title{jedrusiakr: Random Tools I Made and Use}
+\title{jedrusiakr: Utilities for Statistics in Psychology}
 \description{
 A set of some random tools I created for myself to use.
 }
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://github.com/kuba58426/jedrusiakr}
-  \item Report bugs at \url{https://github.com/kuba58426/jedrusiakr/issues}
+  \item \url{https://github.com/jakub-jedrusiak/jedrusiakr}
+  \item Report bugs at \url{https://github.com/jakub-jedrusiak/jedrusiakr/issues}
 }
 
 }

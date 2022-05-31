@@ -3,6 +3,8 @@
 \name{statystyki_opisowe}
 \alias{statystyki_opisowe}
 \alias{statystyki_opisowe_by}
+\alias{opisz}
+\alias{opisz_by}
 \title{Statystyki opisowe}
 \usage{
 statystyki_opisowe(
@@ -17,6 +19,10 @@ statystyki_opisowe_by(
   group,
   ...
 )
+
+opisz(df, kategorialne, porzadkowe, ilosciowe)
+
+opisz_by(df, group, kategorialne, porzadkowe, ilosciowe)
 }
 \arguments{
 \item{df}{data.frame lub tibble. Zbiór danych.}
@@ -26,6 +32,12 @@ statystyki_opisowe_by(
 \item{...}{tidyselect. Kolumny do opisania. Jeśli nie sprecyzowano, opisywane są wszystkie dostępne kolumny. Można użyć czasowników tidyselect jak \code{\link[dplyr]{starts_with}}.}
 
 \item{group}{kolumny ze zmienną grupującą. Podane jako nazwa, ciąg znaków lub wektor tychże.}
+
+\item{kategorialne}{Wektor nazw zmiennych kategorialnych w ramce danych.}
+
+\item{porzadkowe}{Wektor nazw zmiennych porządkowych w ramce danych.}
+
+\item{ilosciowe}{Wektor nazw zmiennych ilościowych w ramce danych.}
 }
 \value{
 Zwracana jest nazwana lista, której zawartość zależy od skali pomiarowej.
@@ -42,6 +54,10 @@ Zwracana jest nazwana lista, której zawartość zależy od skali pomiarowej.
     \item{test_shapiro_wilka}{test normalności Shapiro-Wilka z dodaną istotnością}
   }}
 }
+
+Nazwana lista statystyk opisowych dla zmiennych każdego typu.
+
+Nazwana lista statystyk opisowych dla zmiennych każdego typu.
 }
 \description{
 Zestaw podstawowych statystyk dla danego typu skali pomiarowej, zgodny z
@@ -51,16 +67,24 @@ na dodanie zmiennych grupujących.
 }
 \section{Functions}{
 \itemize{
-\item \code{statystyki_opisowe_by}: Statystyki opisowe z grupowaniem
+\item \code{statystyki_opisowe_by}: Statystyki opisowe z grupowaniem.
+
+\item \code{opisz}: Opisuje całą ramkę danych, użytkownik wskazuje zmienne danego typu.
+
+\item \code{opisz_by}: Opisuje całą ramkę danych ze zmienną grupującą, użytkownik wskazuje zmienne danego typu.
 }}
 
 \examples{
 statystyki_opisowe(iris, "ilosciowa", Sepal.Width)
-statystyki_opisowe(iris, "ilosciowa", where(is.numeric)) # z czasownikiem tidyselect
+statystyki_opisowe(iris, "ilosciowa", tidyselect:::where(is.numeric)) # z czasownikiem tidyselect
 
 data(diamonds, package = "ggplot2")
 # wiele kolumn do opisania
 statystyki_opisowe_by(diamonds, "porzadkowa", group = clarity, price, carat)
 statystyki_opisowe_by(diamonds, "kategorialna", c(cut, clarity), color)
 
+data(diamonds, package = "ggplot2")
+opisz(head(diamonds), color, table, c(carat, price))
+data(diamonds, package = "ggplot2")
+opisz_by(head(diamonds, 100), cut, color, table, c(carat, price))
 }

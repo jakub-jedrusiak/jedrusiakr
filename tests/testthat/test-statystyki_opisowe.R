@@ -1,669 +1,123 @@
 test_that("statystyki_opisowe for kategorialna and statystyki_opisowe_by work", {
   data(diamonds, package = "ggplot2")
-  result <- statystyki_opisowe_by(diamonds, "kategorialna", c(cut, clarity), color)
+  result <- statystyki_opisowe_by(head(diamonds), "kategorialna", c(cut, clarity), color)
 
-  expected_result <- list(
-    Fair.I1 = list(licznosc = list(color = structure(list(n = c(
-      4,
-      9, 35, 53, 52, 34, 23
-    ), `%` = c(
-      1.9, 4.3, 16.7, 25.2, 24.8, 16.2,
-      11
-    ), `val%` = c(1.9, 4.3, 16.7, 25.2, 24.8, 16.2, 11), `%cum` = c(
-      1.9,
-      6.2, 22.9, 48.1, 72.9, 89, 100
-    ), `val%cum` = c(
-      1.9, 6.2, 22.9,
-      48.1, 72.9, 89, 100
-    )), row.names = c(
-      "D", "E", "F", "G", "H",
-      "I", "J"
-    ), class = c("freqtab", "data.frame")))), Good.I1 = list(
-      licznosc = list(color = structure(list(
-        n = c(
-          8, 23, 19, 19,
-          14, 9, 4
-        ), `%` = c(8.3, 24, 19.8, 19.8, 14.6, 9.4, 4.2),
-        `val%` = c(8.3, 24, 19.8, 19.8, 14.6, 9.4, 4.2), `%cum` = c(
-          8.3,
-          32.3, 52.1, 71.9, 86.5, 95.8, 100
-        ), `val%cum` = c(
-          8.3,
-          32.3, 52.1, 71.9, 86.5, 95.8, 100
-        )
-      ), row.names = c(
-        "D",
-        "E", "F", "G", "H", "I", "J"
-      ), class = c("freqtab", "data.frame")))
-    ), `Very Good.I1` = list(licznosc = list(color = structure(list(
-      n = c(5, 22, 13, 16, 12, 8, 8), `%` = c(
-        6, 26.2, 15.5, 19,
-        14.3, 9.5, 9.5
-      ), `val%` = c(
-        6, 26.2, 15.5, 19, 14.3, 9.5,
-        9.5
-      ), `%cum` = c(6, 32.1, 47.6, 66.7, 81, 90.5, 100), `val%cum` = c(
-        6,
-        32.1, 47.6, 66.7, 81, 90.5, 100
-      )
-    ), row.names = c(
-      "D", "E",
-      "F", "G", "H", "I", "J"
-    ), class = c("freqtab", "data.frame")))),
-    Premium.I1 = list(licznosc = list(color = structure(list(
-      n = c(12, 30, 34, 46, 46, 24, 13), `%` = c(
-        5.9, 14.6,
-        16.6, 22.4, 22.4, 11.7, 6.3
-      ), `val%` = c(
-        5.9, 14.6, 16.6,
-        22.4, 22.4, 11.7, 6.3
-      ), `%cum` = c(
-        5.9, 20.5, 37.1, 59.5,
-        82, 93.7, 100
-      ), `val%cum` = c(
-        5.9, 20.5, 37.1, 59.5,
-        82, 93.7, 100
-      )
-    ), row.names = c(
-      "D", "E", "F", "G", "H",
-      "I", "J"
-    ), class = c("freqtab", "data.frame")))), Ideal.I1 = list(
-      licznosc = list(color = structure(list(n = c(
-        13, 18,
-        42, 16, 38, 17, 2
-      ), `%` = c(
-        8.9, 12.3, 28.8, 11, 26,
-        11.6, 1.4
-      ), `val%` = c(
-        8.9, 12.3, 28.8, 11, 26, 11.6,
-        1.4
-      ), `%cum` = c(8.9, 21.2, 50, 61, 87, 98.6, 100), `val%cum` = c(
-        8.9,
-        21.2, 50, 61, 87, 98.6, 100
-      )), row.names = c(
-        "D", "E",
-        "F", "G", "H", "I", "J"
-      ), class = c("freqtab", "data.frame")))
-    ), Fair.SI2 = list(licznosc = list(color = structure(list(
-      n = c(56, 78, 89, 80, 91, 45, 27), `%` = c(
-        12, 16.7,
-        19.1, 17.2, 19.5, 9.7, 5.8
-      ), `val%` = c(
-        12, 16.7, 19.1,
-        17.2, 19.5, 9.7, 5.8
-      ), `%cum` = c(
-        12, 28.8, 47.9, 65,
-        84.5, 94.2, 100
-      ), `val%cum` = c(
-        12, 28.8, 47.9, 65, 84.5,
-        94.2, 100
-      )
-    ), row.names = c(
-      "D", "E", "F", "G", "H", "I",
-      "J"
-    ), class = c("freqtab", "data.frame")))), Good.SI2 = list(
-      licznosc = list(color = structure(list(n = c(
-        223, 202,
-        201, 163, 158, 81, 53
-      ), `%` = c(
-        20.6, 18.7, 18.6, 15.1,
-        14.6, 7.5, 4.9
-      ), `val%` = c(
-        20.6, 18.7, 18.6, 15.1, 14.6,
-        7.5, 4.9
-      ), `%cum` = c(
-        20.6, 39.3, 57.9, 73, 87.6, 95.1,
-        100
-      ), `val%cum` = c(
-        20.6, 39.3, 57.9, 73, 87.6, 95.1,
-        100
-      )), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c("freqtab", "data.frame")))
-    ), `Very Good.SI2` = list(
-      licznosc = list(color = structure(list(n = c(
-        314, 445,
-        343, 327, 343, 200, 128
-      ), `%` = c(
-        15, 21.2, 16.3, 15.6,
-        16.3, 9.5, 6.1
-      ), `val%` = c(
-        15, 21.2, 16.3, 15.6, 16.3,
-        9.5, 6.1
-      ), `%cum` = c(
-        15, 36.1, 52.5, 68, 84.4, 93.9,
-        100
-      ), `val%cum` = c(15, 36.1, 52.5, 68, 84.4, 93.9, 100)), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c(
-        "freqtab",
-        "data.frame"
-      )))
-    ), Premium.SI2 = list(licznosc = list(
-      color = structure(list(n = c(
-        421, 519, 523, 492, 521,
-        312, 161
-      ), `%` = c(
-        14.3, 17.6, 17.7, 16.7, 17.7, 10.6,
-        5.5
-      ), `val%` = c(
-        14.3, 17.6, 17.7, 16.7, 17.7, 10.6,
-        5.5
-      ), `%cum` = c(14.3, 31.9, 49.6, 66.3, 84, 94.5, 100), `val%cum` = c(14.3, 31.9, 49.6, 66.3, 84, 94.5, 100)), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c(
-        "freqtab",
-        "data.frame"
-      ))
-    )), Ideal.SI2 = list(licznosc = list(color = structure(list(
-      n = c(356, 469, 453, 486, 450, 274, 110), `%` = c(
-        13.7,
-        18.1, 17.4, 18.7, 17.3, 10.5, 4.2
-      ), `val%` = c(
-        13.7,
-        18.1, 17.4, 18.7, 17.3, 10.5, 4.2
-      ), `%cum` = c(
-        13.7,
-        31.8, 49.2, 67.9, 85.2, 95.8, 100
-      ), `val%cum` = c(
-        13.7,
-        31.8, 49.2, 67.9, 85.2, 95.8, 100
-      )
-    ), row.names = c(
-      "D",
-      "E", "F", "G", "H", "I", "J"
-    ), class = c("freqtab", "data.frame")))), Fair.SI1 = list(licznosc = list(color = structure(list(
-      n = c(58, 65, 83, 69, 75, 30, 28), `%` = c(
-        14.2, 15.9,
-        20.3, 16.9, 18.4, 7.4, 6.9
-      ), `val%` = c(
-        14.2, 15.9, 20.3,
-        16.9, 18.4, 7.4, 6.9
-      ), `%cum` = c(
-        14.2, 30.1, 50.5, 67.4,
-        85.8, 93.1, 100
-      ), `val%cum` = c(
-        14.2, 30.1, 50.5, 67.4,
-        85.8, 93.1, 100
-      )
-    ), row.names = c(
-      "D", "E", "F", "G",
-      "H", "I", "J"
-    ), class = c("freqtab", "data.frame")))), Good.SI1 = list(
-      licznosc = list(color = structure(list(n = c(
-        237, 355,
-        273, 207, 235, 165, 88
-      ), `%` = c(
-        15.2, 22.8, 17.5, 13.3,
-        15.1, 10.6, 5.6
-      ), `val%` = c(
-        15.2, 22.8, 17.5, 13.3,
-        15.1, 10.6, 5.6
-      ), `%cum` = c(
-        15.2, 37.9, 55.4, 68.7,
-        83.8, 94.4, 100
-      ), `val%cum` = c(
-        15.2, 37.9, 55.4, 68.7,
-        83.8, 94.4, 100
-      )), row.names = c(
-        "D", "E", "F", "G",
-        "H", "I", "J"
-      ), class = c("freqtab", "data.frame")))
-    ),
-    `Very Good.SI1` = list(licznosc = list(color = structure(list(
-      n = c(494, 626, 559, 474, 547, 358, 182), `%` = c(
-        15.2,
-        19.3, 17.3, 14.6, 16.9, 11, 5.6
-      ), `val%` = c(
-        15.2, 19.3,
-        17.3, 14.6, 16.9, 11, 5.6
-      ), `%cum` = c(
-        15.2, 34.6, 51.8,
-        66.5, 83.3, 94.4, 100
-      ), `val%cum` = c(
-        15.2, 34.6, 51.8,
-        66.5, 83.3, 94.4, 100
-      )
-    ), row.names = c(
-      "D", "E", "F",
-      "G", "H", "I", "J"
-    ), class = c("freqtab", "data.frame")))),
-    Premium.SI1 = list(licznosc = list(color = structure(list(
-      n = c(556, 614, 608, 566, 655, 367, 209), `%` = c(
-        15.6,
-        17.2, 17, 15.8, 18.3, 10.3, 5.8
-      ), `val%` = c(
-        15.6, 17.2,
-        17, 15.8, 18.3, 10.3, 5.8
-      ), `%cum` = c(
-        15.6, 32.7, 49.7,
-        65.6, 83.9, 94.2, 100
-      ), `val%cum` = c(
-        15.6, 32.7, 49.7,
-        65.6, 83.9, 94.2, 100
-      )
-    ), row.names = c(
-      "D", "E", "F",
-      "G", "H", "I", "J"
-    ), class = c("freqtab", "data.frame")))),
-    Ideal.SI1 = list(licznosc = list(color = structure(list(n = c(
-      738,
-      766, 608, 660, 763, 504, 243
-    ), `%` = c(
-      17.2, 17.9, 14.2,
-      15.4, 17.8, 11.8, 5.7
-    ), `val%` = c(
-      17.2, 17.9, 14.2, 15.4,
-      17.8, 11.8, 5.7
-    ), `%cum` = c(
-      17.2, 35.1, 49.3, 64.7, 82.6,
-      94.3, 100
-    ), `val%cum` = c(
-      17.2, 35.1, 49.3, 64.7, 82.6, 94.3,
-      100
-    )), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c(
-      "freqtab",
-      "data.frame"
-    )))), Fair.VS2 = list(licznosc = list(color = structure(list(
-      n = c(25, 42, 53, 45, 41, 32, 23), `%` = c(
-        9.6, 16.1,
-        20.3, 17.2, 15.7, 12.3, 8.8
-      ), `val%` = c(
-        9.6, 16.1, 20.3,
-        17.2, 15.7, 12.3, 8.8
-      ), `%cum` = c(
-        9.6, 25.7, 46, 63.2,
-        78.9, 91.2, 100
-      ), `val%cum` = c(
-        9.6, 25.7, 46, 63.2,
-        78.9, 91.2, 100
-      )
-    ), row.names = c(
-      "D", "E", "F", "G",
-      "H", "I", "J"
-    ), class = c("freqtab", "data.frame")))), Good.VS2 = list(
-      licznosc = list(color = structure(list(n = c(
-        104, 160,
-        184, 192, 138, 110, 90
-      ), `%` = c(
-        10.6, 16.4, 18.8, 19.6,
-        14.1, 11.2, 9.2
-      ), `val%` = c(
-        10.6, 16.4, 18.8, 19.6,
-        14.1, 11.2, 9.2
-      ), `%cum` = c(
-        10.6, 27, 45.8, 65.4, 79.6,
-        90.8, 100
-      ), `val%cum` = c(
-        10.6, 27, 45.8, 65.4, 79.6,
-        90.8, 100
-      )), row.names = c(
-        "D", "E", "F", "G", "H", "I",
-        "J"
-      ), class = c("freqtab", "data.frame")))
-    ), `Very Good.VS2` = list(
-      licznosc = list(color = structure(list(n = c(
-        309, 503,
-        466, 479, 376, 274, 184
-      ), `%` = c(
-        11.9, 19.4, 18, 18.5,
-        14.5, 10.6, 7.1
-      ), `val%` = c(
-        11.9, 19.4, 18, 18.5, 14.5,
-        10.6, 7.1
-      ), `%cum` = c(
-        11.9, 31.3, 49.3, 67.8, 82.3,
-        92.9, 100
-      ), `val%cum` = c(
-        11.9, 31.3, 49.3, 67.8, 82.3,
-        92.9, 100
-      )), row.names = c(
-        "D", "E", "F", "G", "H", "I",
-        "J"
-      ), class = c("freqtab", "data.frame")))
-    ), Premium.VS2 = list(
-      licznosc = list(color = structure(list(n = c(
-        339, 629,
-        619, 721, 532, 315, 202
-      ), `%` = c(
-        10.1, 18.7, 18.4, 21.5,
-        15.8, 9.4, 6
-      ), `val%` = c(
-        10.1, 18.7, 18.4, 21.5, 15.8,
-        9.4, 6
-      ), `%cum` = c(
-        10.1, 28.8, 47.3, 68.8, 84.6, 94,
-        100
-      ), `val%cum` = c(
-        10.1, 28.8, 47.3, 68.8, 84.6, 94,
-        100
-      )), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c("freqtab", "data.frame")))
-    ), Ideal.VS2 = list(
-      licznosc = list(color = structure(list(n = c(
-        920, 1136,
-        879, 910, 556, 438, 232
-      ), `%` = c(
-        18.1, 22.4, 17.3, 17.9,
-        11, 8.6, 4.6
-      ), `val%` = c(
-        18.1, 22.4, 17.3, 17.9, 11,
-        8.6, 4.6
-      ), `%cum` = c(
-        18.1, 40.5, 57.9, 75.8, 86.8, 95.4,
-        100
-      ), `val%cum` = c(
-        18.1, 40.5, 57.9, 75.8, 86.8, 95.4,
-        100
-      )), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c("freqtab", "data.frame")))
-    ), Fair.VS1 = list(
-      licznosc = list(color = structure(list(n = c(
-        5, 14, 33,
-        45, 32, 25, 16
-      ), `%` = c(
-        2.9, 8.2, 19.4, 26.5, 18.8,
-        14.7, 9.4
-      ), `val%` = c(
-        2.9, 8.2, 19.4, 26.5, 18.8, 14.7,
-        9.4
-      ), `%cum` = c(2.9, 11.2, 30.6, 57.1, 75.9, 90.6, 100), `val%cum` = c(2.9, 11.2, 30.6, 57.1, 75.9, 90.6, 100)), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c(
-        "freqtab",
-        "data.frame"
-      )))
-    ), Good.VS1 = list(licznosc = list(color = structure(list(
-      n = c(43, 89, 132, 152, 77, 103, 52), `%` = c(
-        6.6, 13.7,
-        20.4, 23.5, 11.9, 15.9, 8
-      ), `val%` = c(
-        6.6, 13.7, 20.4,
-        23.5, 11.9, 15.9, 8
-      ), `%cum` = c(
-        6.6, 20.4, 40.7, 64.2,
-        76.1, 92, 100
-      ), `val%cum` = c(
-        6.6, 20.4, 40.7, 64.2,
-        76.1, 92, 100
-      )
-    ), row.names = c(
-      "D", "E", "F", "G", "H",
-      "I", "J"
-    ), class = c("freqtab", "data.frame")))), `Very Good.VS1` = list(
-      licznosc = list(color = structure(list(n = c(
-        175, 293,
-        293, 432, 257, 205, 120
-      ), `%` = c(
-        9.9, 16.5, 16.5, 24.3,
-        14.5, 11.5, 6.8
-      ), `val%` = c(
-        9.9, 16.5, 16.5, 24.3, 14.5,
-        11.5, 6.8
-      ), `%cum` = c(
-        9.9, 26.4, 42.9, 67.2, 81.7, 93.2,
-        100
-      ), `val%cum` = c(
-        9.9, 26.4, 42.9, 67.2, 81.7, 93.2,
-        100
-      )), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c("freqtab", "data.frame")))
-    ), Premium.VS1 = list(
-      licznosc = list(color = structure(list(n = c(
-        131, 292,
-        290, 566, 336, 221, 153
-      ), `%` = c(
-        6.6, 14.7, 14.6, 28.5,
-        16.9, 11.1, 7.7
-      ), `val%` = c(
-        6.6, 14.7, 14.6, 28.5, 16.9,
-        11.1, 7.7
-      ), `%cum` = c(
-        6.6, 21.3, 35.8, 64.3, 81.2, 92.3,
-        100
-      ), `val%cum` = c(
-        6.6, 21.3, 35.8, 64.3, 81.2, 92.3,
-        100
-      )), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c("freqtab", "data.frame")))
-    ), Ideal.VS1 = list(
-      licznosc = list(color = structure(list(n = c(
-        351, 593,
-        616, 953, 467, 408, 201
-      ), `%` = c(
-        9.8, 16.5, 17.2, 26.6,
-        13, 11.4, 5.6
-      ), `val%` = c(
-        9.8, 16.5, 17.2, 26.6, 13,
-        11.4, 5.6
-      ), `%cum` = c(
-        9.8, 26.3, 43.5, 70, 83, 94.4,
-        100
-      ), `val%cum` = c(9.8, 26.3, 43.5, 70, 83, 94.4, 100)), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c(
-        "freqtab",
-        "data.frame"
-      )))
-    ), Fair.VVS2 = list(licznosc = list(color = structure(list(
-      n = c(9, 13, 10, 17, 11, 8, 1), `%` = c(
-        13, 18.8, 14.5,
-        24.6, 15.9, 11.6, 1.4
-      ), `val%` = c(
-        13, 18.8, 14.5, 24.6,
-        15.9, 11.6, 1.4
-      ), `%cum` = c(
-        13, 31.9, 46.4, 71, 87,
-        98.6, 100
-      ), `val%cum` = c(
-        13, 31.9, 46.4, 71, 87, 98.6,
-        100
-      )
-    ), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c("freqtab", "data.frame")))), Good.VVS2 = list(
-      licznosc = list(color = structure(list(n = c(
-        25, 52,
-        50, 75, 45, 26, 13
-      ), `%` = c(
-        8.7, 18.2, 17.5, 26.2, 15.7,
-        9.1, 4.5
-      ), `val%` = c(
-        8.7, 18.2, 17.5, 26.2, 15.7, 9.1,
-        4.5
-      ), `%cum` = c(8.7, 26.9, 44.4, 70.6, 86.4, 95.5, 100), `val%cum` = c(8.7, 26.9, 44.4, 70.6, 86.4, 95.5, 100)), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c(
-        "freqtab",
-        "data.frame"
-      )))
-    ), `Very Good.VVS2` = list(licznosc = list(
-      color = structure(list(
-        n = c(
-          141, 298, 249, 302, 145,
-          71, 29
-        ), `%` = c(11.4, 24.1, 20.2, 24.5, 11.7, 5.7, 2.3), `val%` = c(11.4, 24.1, 20.2, 24.5, 11.7, 5.7, 2.3),
-        `%cum` = c(11.4, 35.5, 55.7, 80.2, 91.9, 97.7, 100), `val%cum` = c(
-          11.4, 35.5, 55.7, 80.2, 91.9, 97.7,
-          100
-        )
-      ), row.names = c(
-        "D", "E", "F", "G", "H", "I",
-        "J"
-      ), class = c("freqtab", "data.frame"))
-    )), Premium.VVS2 = list(
-      licznosc = list(color = structure(list(n = c(
-        94, 121,
-        146, 275, 118, 82, 34
-      ), `%` = c(
-        10.8, 13.9, 16.8, 31.6,
-        13.6, 9.4, 3.9
-      ), `val%` = c(
-        10.8, 13.9, 16.8, 31.6, 13.6,
-        9.4, 3.9
-      ), `%cum` = c(
-        10.8, 24.7, 41.5, 73.1, 86.7, 96.1,
-        100
-      ), `val%cum` = c(
-        10.8, 24.7, 41.5, 73.1, 86.7, 96.1,
-        100
-      )), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c("freqtab", "data.frame")))
-    ), Ideal.VVS2 = list(
-      licznosc = list(color = structure(list(n = c(
-        284, 507,
-        520, 774, 289, 178, 54
-      ), `%` = c(
-        10.9, 19.5, 20, 29.7,
-        11.1, 6.8, 2.1
-      ), `val%` = c(
-        10.9, 19.5, 20, 29.7, 11.1,
-        6.8, 2.1
-      ), `%cum` = c(
-        10.9, 30.4, 50.3, 80, 91.1, 97.9,
-        100
-      ), `val%cum` = c(
-        10.9, 30.4, 50.3, 80, 91.1, 97.9,
-        100
-      )), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c("freqtab", "data.frame")))
-    ), Fair.VVS1 = list(
-      licznosc = list(color = structure(list(n = c(
-        3, 3, 5,
-        3, 1, 1, 1
-      ), `%` = c(
-        17.6, 17.6, 29.4, 17.6, 5.9, 5.9,
-        5.9
-      ), `val%` = c(17.6, 17.6, 29.4, 17.6, 5.9, 5.9, 5.9), `%cum` = c(17.6, 35.3, 64.7, 82.4, 88.2, 94.1, 100), `val%cum` = c(
-        17.6, 35.3, 64.7, 82.4, 88.2, 94.1,
-        100
-      )), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c("freqtab", "data.frame")))
-    ), Good.VVS1 = list(
-      licznosc = list(color = structure(list(
-        n = c(
-          13, 43,
-          35, 41, 31, 22, 1
-        ), `%` = c(
-          7, 23.1, 18.8, 22, 16.7,
-          11.8, 0.5
-        ), `val%` = c(
-          7, 23.1, 18.8, 22, 16.7, 11.8,
-          0.5
-        ), `%cum` = c(7, 30.1, 48.9, 71, 87.6, 99.5, 100),
-        `val%cum` = c(7, 30.1, 48.9, 71, 87.6, 99.5, 100)
-      ), row.names = c(
-        "D",
-        "E", "F", "G", "H", "I", "J"
-      ), class = c("freqtab", "data.frame")))
-    ), `Very Good.VVS1` = list(licznosc = list(color = structure(list(
-      n = c(52, 170, 174, 190, 115, 69, 19), `%` = c(
-        6.6, 21.5,
-        22.1, 24.1, 14.6, 8.7, 2.4
-      ), `val%` = c(
-        6.6, 21.5, 22.1,
-        24.1, 14.6, 8.7, 2.4
-      ), `%cum` = c(
-        6.6, 28.1, 50.2, 74.3,
-        88.8, 97.6, 100
-      ), `val%cum` = c(
-        6.6, 28.1, 50.2, 74.3,
-        88.8, 97.6, 100
-      )
-    ), row.names = c(
-      "D", "E", "F", "G",
-      "H", "I", "J"
-    ), class = c("freqtab", "data.frame")))), Premium.VVS1 = list(
-      licznosc = list(color = structure(list(n = c(
-        40, 105,
-        80, 171, 112, 84, 24
-      ), `%` = c(
-        6.5, 17, 13, 27.8, 18.2,
-        13.6, 3.9
-      ), `val%` = c(
-        6.5, 17, 13, 27.8, 18.2, 13.6,
-        3.9
-      ), `%cum` = c(6.5, 23.5, 36.5, 64.3, 82.5, 96.1, 100), `val%cum` = c(6.5, 23.5, 36.5, 64.3, 82.5, 96.1, 100)), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c(
-        "freqtab",
-        "data.frame"
-      )))
-    ), Ideal.VVS1 = list(licznosc = list(color = structure(list(
-      n = c(144, 335, 440, 594, 326, 179, 29), `%` = c(
-        7, 16.4,
-        21.5, 29, 15.9, 8.7, 1.4
-      ), `val%` = c(
-        7, 16.4, 21.5,
-        29, 15.9, 8.7, 1.4
-      ), `%cum` = c(
-        7, 23.4, 44.9, 73.9,
-        89.8, 98.6, 100
-      ), `val%cum` = c(
-        7, 23.4, 44.9, 73.9,
-        89.8, 98.6, 100
-      )
-    ), row.names = c(
-      "D", "E", "F", "G",
-      "H", "I", "J"
-    ), class = c("freqtab", "data.frame")))), Fair.IF = list(
-      licznosc = list(color = structure(list(n = c(
-        3, 0, 4,
-        2, 0, 0, 0
-      ), `%` = c(33.3, 0, 44.4, 22.2, 0, 0, 0), `val%` = c(
-        33.3,
-        0, 44.4, 22.2, 0, 0, 0
-      ), `%cum` = c(
-        33.3, 33.3, 77.8,
-        100, 100, 100, 100
-      ), `val%cum` = c(
-        33.3, 33.3, 77.8,
-        100, 100, 100, 100
-      )), row.names = c(
-        "D", "E", "F", "G",
-        "H", "I", "J"
-      ), class = c("freqtab", "data.frame")))
-    ),
-    Good.IF = list(licznosc = list(color = structure(list(n = c(
-      9,
-      9, 15, 22, 4, 6, 6
-    ), `%` = c(
-      12.7, 12.7, 21.1, 31, 5.6, 8.5,
-      8.5
-    ), `val%` = c(12.7, 12.7, 21.1, 31, 5.6, 8.5, 8.5), `%cum` = c(
-      12.7,
-      25.4, 46.5, 77.5, 83.1, 91.5, 100
-    ), `val%cum` = c(
-      12.7, 25.4,
-      46.5, 77.5, 83.1, 91.5, 100
-    )), row.names = c(
-      "D", "E", "F",
-      "G", "H", "I", "J"
-    ), class = c("freqtab", "data.frame")))),
-    `Very Good.IF` = list(licznosc = list(color = structure(list(
-      n = c(23, 43, 67, 79, 29, 19, 8), `%` = c(
-        8.6, 16, 25,
-        29.5, 10.8, 7.1, 3
-      ), `val%` = c(
-        8.6, 16, 25, 29.5, 10.8,
-        7.1, 3
-      ), `%cum` = c(
-        8.6, 24.6, 49.6, 79.1, 89.9, 97,
-        100
-      ), `val%cum` = c(
-        8.6, 24.6, 49.6, 79.1, 89.9, 97,
-        100
-      )
-    ), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c("freqtab", "data.frame")))), Premium.IF = list(
-      licznosc = list(color = structure(list(n = c(
-        10, 27,
-        31, 87, 40, 23, 12
-      ), `%` = c(
-        4.3, 11.7, 13.5, 37.8, 17.4,
-        10, 5.2
-      ), `val%` = c(
-        4.3, 11.7, 13.5, 37.8, 17.4, 10,
-        5.2
-      ), `%cum` = c(4.3, 16.1, 29.6, 67.4, 84.8, 94.8, 100), `val%cum` = c(4.3, 16.1, 29.6, 67.4, 84.8, 94.8, 100)), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c(
-        "freqtab",
-        "data.frame"
-      )))
-    ), Ideal.IF = list(licznosc = list(color = structure(list(
-      n = c(28, 79, 268, 491, 226, 95, 25), `%` = c(
-        2.3, 6.5,
-        22.1, 40.5, 18.6, 7.8, 2.1
-      ), `val%` = c(
-        2.3, 6.5, 22.1,
-        40.5, 18.6, 7.8, 2.1
-      ), `%cum` = c(
-        2.3, 8.8, 30.9, 71.5,
-        90.1, 97.9, 100
-      ), `val%cum` = c(
-        2.3, 8.8, 30.9, 71.5,
-        90.1, 97.9, 100
-      )
-    ), row.names = c(
-      "D", "E", "F", "G",
-      "H", "I", "J"
-    ), class = c("freqtab", "data.frame"))))
-  )
+  expected_result <- list(Good.SI2 = list(licznosc = list(color = structure(list(
+    n = 1,
+    `%` = 100, `val%` = 100, `%cum` = 100, `val%cum` = 100
+  ), row.names = "J", class = c(
+    "freqtab",
+    "data.frame"
+  )))), `Very Good.SI2` = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))), Premium.SI2 = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))), Ideal.SI2 = list(licznosc = list(color = structure(list(
+    n = 1, `%` = 100, `val%` = 100, `%cum` = 100, `val%cum` = 100
+  ), row.names = "E", class = c(
+    "freqtab",
+    "data.frame"
+  )))), Good.SI1 = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))), `Very Good.SI1` = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))), Premium.SI1 = list(licznosc = list(color = structure(list(
+    n = 1, `%` = 100, `val%` = 100, `%cum` = 100, `val%cum` = 100
+  ), row.names = "E", class = c(
+    "freqtab",
+    "data.frame"
+  )))), Ideal.SI1 = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))), Good.VS2 = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))), `Very Good.VS2` = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))), Premium.VS2 = list(licznosc = list(color = structure(list(
+    n = 1, `%` = 100, `val%` = 100, `%cum` = 100, `val%cum` = 100
+  ), row.names = "I", class = c(
+    "freqtab",
+    "data.frame"
+  )))), Ideal.VS2 = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))), Good.VS1 = list(licznosc = list(color = structure(list(
+    n = 1, `%` = 100, `val%` = 100, `%cum` = 100, `val%cum` = 100
+  ), row.names = "E", class = c(
+    "freqtab",
+    "data.frame"
+  )))), `Very Good.VS1` = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))), Premium.VS1 = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))), Ideal.VS1 = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))), Good.VVS2 = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))), `Very Good.VVS2` = list(licznosc = list(color = structure(list(
+    n = 1, `%` = 100, `val%` = 100, `%cum` = 100, `val%cum` = 100
+  ), row.names = "J", class = c(
+    "freqtab",
+    "data.frame"
+  )))), Premium.VVS2 = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))), Ideal.VVS2 = list(licznosc = list(color = structure(list(
+    n = numeric(0), `%` = numeric(0), `val%` = numeric(0), `%cum` = numeric(0),
+    `val%cum` = numeric(0)
+  ), row.names = integer(0), class = c(
+    "freqtab",
+    "data.frame"
+  )))))
 
   expect_equal(result, expected_result, ignore_attr = TRUE, tolerance = 0.5)
 })
@@ -741,4 +195,362 @@ test_that("statystyki_opisowe for porzadkowa works", {
 
 test_that("statystyki_opisowe invalid type error works", {
   expect_error(statystyki_opisowe(iris, "other type", Sepal.Length))
+})
+
+test_that("opisz() works", {
+  data(diamonds, package = "ggplot2")
+  result <- opisz(head(diamonds), color, table, c(carat, price))
+
+  expected_result <- list(kategorialne = list(licznosc = list(color = structure(list(
+    n = c(3, 1, 2), `%` = c(50, 16.7, 33.3), `val%` = c(
+      50, 16.7,
+      33.3
+    ), `%cum` = c(50, 66.7, 100), `val%cum` = c(
+      50, 66.7,
+      100
+    )
+  ), row.names = c("E", "I", "J"), class = c(
+    "freqtab",
+    "data.frame"
+  )))), porzadkowe = list(licznosc = list(table = structure(list(
+    n = c(1, 1, 2, 1, 1), `%` = c(16.7, 16.7, 33.3, 16.7, 16.7), `val%` = c(16.7, 16.7, 33.3, 16.7, 16.7), `%cum` = c(
+      16.7,
+      33.3, 66.7, 83.3, 100
+    ), `val%cum` = c(
+      16.7, 33.3, 66.7, 83.3,
+      100
+    )
+  ), row.names = c("55", "57", "58", "61", "65"), class = c(
+    "freqtab",
+    "data.frame"
+  ))), opisowe = structure(list(
+    var = "table", N = 6L,
+    Me = 58, R = 10, RQ = c(`75%` = 3), VQ = c(`75%` = 0.0258620689655172),
+    VQ_interp = "quasi-stała", `NA` = 0L
+  ), class = c(
+    "tbl_df",
+    "tbl", "data.frame"
+  ), row.names = c(NA, -1L))), ilosciowe = list(
+    opisowe = structure(list(var = c("carat", "price"), N = c(
+      6L,
+      6L
+    ), M = c(0.251666666666667, 330.666666666667), SD = c(
+      0.0392003401345788,
+      4.80277697448743
+    ), A = c(0.79960791866874, 0.047539933799705), K = c(-1.14779245345165, -3.07352400681613), `NA` = c(
+      0L,
+      0L
+    )), class = c("tbl_df", "tbl", "data.frame"), row.names = c(
+      NA,
+      -2L
+    )), test_shapiro_wilka = structure(list(var = c(
+      "carat",
+      "price"
+    ), statistic = c(W = 0.87561912060703, W = 0.79473474038918), p = c(0.249536560294192, 0.0526727704745381), p.signif = c(
+      "ns",
+      "ns"
+    )), row.names = c(NA, -2L), class = c(
+      "tbl_df", "tbl",
+      "data.frame"
+    ))
+  ))
+
+  expect_equal(result, expected_result, ignore_attr = TRUE, tolerance = 0.5)
+})
+
+test_that("opisz_by() works", {
+  data(diamonds, package = "ggplot2")
+  result <- opisz_by(head(diamonds, 100), cut, color, table, c(carat, price))
+
+  expected_result <- list(
+    kategorialne = list(
+      Fair = list(licznosc = list(color = structure(list(
+        n = c(2, 1), `%` = c(66.7, 33.3), `val%` = c(66.7, 33.3),
+        `%cum` = c(66.7, 100), `val%cum` = c(66.7, 100)
+      ), row.names = c(
+        "E",
+        "F"
+      ), class = c("freqtab", "data.frame")))), Good = list(licznosc = list(
+        color = structure(list(n = c(2, 4, 2, 4, 2, 4), `%` = c(
+          11.1,
+          22.2, 11.1, 22.2, 11.1, 22.2
+        ), `val%` = c(
+          11.1, 22.2, 11.1,
+          22.2, 11.1, 22.2
+        ), `%cum` = c(
+          11.1, 33.3, 44.4, 66.7, 77.8,
+          100
+        ), `val%cum` = c(11.1, 33.3, 44.4, 66.7, 77.8, 100)), row.names = c(
+          "D",
+          "E", "F", "H", "I", "J"
+        ), class = c("freqtab", "data.frame"))
+      )), `Very Good` = list(licznosc = list(color = structure(list(
+        n = c(7, 9, 5, 3, 6, 3, 5), `%` = c(
+          18.4, 23.7, 13.2, 7.9,
+          15.8, 7.9, 13.2
+        ), `val%` = c(
+          18.4, 23.7, 13.2, 7.9, 15.8,
+          7.9, 13.2
+        ), `%cum` = c(
+          18.4, 42.1, 55.3, 63.2, 78.9, 86.8,
+          100
+        ), `val%cum` = c(18.4, 42.1, 55.3, 63.2, 78.9, 86.8, 100)
+      ), row.names = c("D", "E", "F", "G", "H", "I", "J"), class = c(
+        "freqtab",
+        "data.frame"
+      )))), Premium = list(licznosc = list(color = structure(list(
+        n = c(2, 5, 2, 2, 6, 4, 1), `%` = c(
+          9.1, 22.7, 9.1, 9.1,
+          27.3, 18.2, 4.5
+        ), `val%` = c(
+          9.1, 22.7, 9.1, 9.1, 27.3, 18.2,
+          4.5
+        ), `%cum` = c(9.1, 31.8, 40.9, 50, 77.3, 95.5, 100), `val%cum` = c(
+          9.1,
+          31.8, 40.9, 50, 77.3, 95.5, 100
+        )
+      ), row.names = c(
+        "D", "E",
+        "F", "G", "H", "I", "J"
+      ), class = c("freqtab", "data.frame")))),
+      Ideal = list(licznosc = list(color = structure(list(n = c(
+        2,
+        3, 3, 8, 3
+      ), `%` = c(10.5, 15.8, 15.8, 42.1, 15.8), `val%` = c(
+        10.5,
+        15.8, 15.8, 42.1, 15.8
+      ), `%cum` = c(
+        10.5, 26.3, 42.1, 84.2,
+        100
+      ), `val%cum` = c(10.5, 26.3, 42.1, 84.2, 100)), row.names = c(
+        "D",
+        "E", "G", "I", "J"
+      ), class = c("freqtab", "data.frame"))))
+    ),
+    porzadkowe = list(Fair = list(licznosc = list(table = structure(list(
+      n = c(1, 1, 1), `%` = c(33.3, 33.3, 33.3), `val%` = c(
+        33.3,
+        33.3, 33.3
+      ), `%cum` = c(33.3, 66.7, 100), `val%cum` = c(
+        33.3,
+        66.7, 100
+      )
+    ), row.names = c("61", "62", "69"), class = c(
+      "freqtab",
+      "data.frame"
+    ))), opisowe = structure(list(
+      var = "table",
+      N = 3L, Me = 62, R = 8, RQ = c(`75%` = 4), VQ = c(`75%` = 0.032258064516129),
+      VQ_interp = "quasi-stała", `NA` = 0L
+    ), class = c(
+      "tbl_df",
+      "tbl", "data.frame"
+    ), row.names = c(NA, -1L))), Good = list(
+      licznosc = list(table = structure(list(n = c(
+        2, 2, 5,
+        1, 2, 2, 1, 1, 1, 1
+      ), `%` = c(
+        11.1, 11.1, 27.8, 5.6,
+        11.1, 11.1, 5.6, 5.6, 5.6, 5.6
+      ), `val%` = c(
+        11.1, 11.1,
+        27.8, 5.6, 11.1, 11.1, 5.6, 5.6, 5.6, 5.6
+      ), `%cum` = c(
+        11.1,
+        22.2, 50, 55.6, 66.7, 77.8, 83.3, 88.9, 94.4, 100
+      ), `val%cum` = c(
+        11.1,
+        22.2, 50, 55.6, 66.7, 77.8, 83.3, 88.9, 94.4, 100
+      )), row.names = c(
+        "54",
+        "55", "56", "57", "58", "59", "60", "62", "63", "65"
+      ), class = c(
+        "freqtab",
+        "data.frame"
+      ))), opisowe = structure(list(
+        var = "table",
+        N = 18L, Me = 56.5, R = 11, RQ = c(`75%` = 3), VQ = c(`75%` = 0.0265486725663717),
+        VQ_interp = "quasi-stała", `NA` = 0L
+      ), class = c(
+        "tbl_df",
+        "tbl", "data.frame"
+      ), row.names = c(NA, -1L))
+    ), `Very Good` = list(
+      licznosc = list(table = structure(list(n = c(
+        1, 3, 2,
+        11, 4, 6, 6, 3, 2
+      ), `%` = c(
+        2.6, 7.9, 5.3, 28.9, 10.5,
+        15.8, 15.8, 7.9, 5.3
+      ), `val%` = c(
+        2.6, 7.9, 5.3, 28.9,
+        10.5, 15.8, 15.8, 7.9, 5.3
+      ), `%cum` = c(
+        2.6, 10.5, 15.8,
+        44.7, 55.3, 71.1, 86.8, 94.7, 100
+      ), `val%cum` = c(
+        2.6,
+        10.5, 15.8, 44.7, 55.3, 71.1, 86.8, 94.7, 100
+      )), row.names = c(
+        "54",
+        "55", "56", "57", "58", "59", "60", "61", "62"
+      ), class = c(
+        "freqtab",
+        "data.frame"
+      ))), opisowe = structure(list(
+        var = "table",
+        N = 38L, Me = 58, R = 8, RQ = c(`75%` = 3), VQ = c(`75%` = 0.0258620689655172),
+        VQ_interp = "quasi-stała", `NA` = 0L
+      ), class = c(
+        "tbl_df",
+        "tbl", "data.frame"
+      ), row.names = c(NA, -1L))
+    ), Premium = list(
+      licznosc = list(table = structure(list(n = c(
+        2, 10, 5,
+        3, 2
+      ), `%` = c(9.1, 45.5, 22.7, 13.6, 9.1), `val%` = c(
+        9.1,
+        45.5, 22.7, 13.6, 9.1
+      ), `%cum` = c(
+        9.1, 54.5, 77.3, 90.9,
+        100
+      ), `val%cum` = c(9.1, 54.5, 77.3, 90.9, 100)), row.names = c(
+        "57",
+        "58", "59", "61", "62"
+      ), class = c("freqtab", "data.frame"))), opisowe = structure(list(
+        var = "table", N = 22L,
+        Me = 58, R = 5, RQ = c(`75%` = 1), VQ = c(`75%` = 0.00862068965517241),
+        VQ_interp = "quasi-stała", `NA` = 0L
+      ), class = c(
+        "tbl_df",
+        "tbl", "data.frame"
+      ), row.names = c(NA, -1L))
+    ), Ideal = list(
+      licznosc = list(table = structure(list(n = c(
+        3, 3, 1,
+        7, 3, 1, 1
+      ), `%` = c(
+        15.8, 15.8, 5.3, 36.8, 15.8, 5.3,
+        5.3
+      ), `val%` = c(15.8, 15.8, 5.3, 36.8, 15.8, 5.3, 5.3), `%cum` = c(15.8, 31.6, 36.8, 73.7, 89.5, 94.7, 100), `val%cum` = c(
+        15.8, 31.6, 36.8, 73.7, 89.5, 94.7,
+        100
+      )), row.names = c(
+        "54", "55", "55.3", "56", "57",
+        "58", "59"
+      ), class = c("freqtab", "data.frame"))), opisowe = structure(list(
+        var = "table", N = 19L, Me = 56, R = 5, RQ = c(`75%` = 1.5),
+        VQ = c(`75%` = 0.0133928571428571), VQ_interp = "quasi-stała",
+        `NA` = 0L
+      ), class = c("tbl_df", "tbl", "data.frame"), row.names = c(NA, -1L))
+    )), ilosciowe = list(Fair = list(
+      opisowe = structure(list(var = c("carat", "price"), N = c(
+        3L,
+        3L
+      ), M = c(0.68, 1951), SD = c(0.401497197997695, 1397.76535942196), A = c(-1.61195652922188, -1.73204681819718), K = c(
+        NaN,
+        NaN
+      ), `NA` = c(0L, 0L)), class = c("tbl_df", "tbl", "data.frame"), row.names = c(NA, -2L)), test_shapiro_wilka = structure(list(
+        var = c("carat", "price"), statistic = c(
+          W = 0.849255583126551,
+          W = 0.750619322451002
+        ), p = c(0.23846127291196, 0.00136636629828201), p.signif = c("ns", "**")
+      ), row.names = c(NA, -2L), class = c("tbl_df", "tbl", "data.frame"))
+    ), Good = list(
+      opisowe = structure(list(var = c("carat", "price"), N = c(
+        18L,
+        18L
+      ), M = c(0.329444444444444, 661.277777777778), SD = c(
+        0.138244124318167,
+        765.773565484453
+      ), A = c(2.44559550091808, 2.67120496811094), K = c(5.12606091527699, 5.85178584752777), `NA` = c(
+        0L,
+        0L
+      )), class = c("tbl_df", "tbl", "data.frame"), row.names = c(
+        NA,
+        -2L
+      )), test_shapiro_wilka = structure(list(
+        var = c(
+          "carat",
+          "price"
+        ), statistic = c(W = 0.573747545754471, W = 0.437645559303164), p = c(3.75788904857235e-06, 2.41206476043061e-07),
+        p.signif = c("****", "****")
+      ), row.names = c(
+        NA,
+        -2L
+      ), class = c("tbl_df", "tbl", "data.frame"))
+    ), `Very Good` = list(
+      opisowe = structure(list(var = c("carat", "price"), N = c(
+        38L,
+        38L
+      ), M = c(0.298421052631579, 610.210526315789), SD = c(
+        0.134496585223194,
+        642.879550649232
+      ), A = c(3.01194041100671, 3.16074204588235), K = c(8.15407378138952, 8.66630104424168), `NA` = c(
+        0L,
+        0L
+      )), class = c("tbl_df", "tbl", "data.frame"), row.names = c(
+        NA,
+        -2L
+      )), test_shapiro_wilka = structure(list(
+        var = c(
+          "carat",
+          "price"
+        ), statistic = c(W = 0.494549642111908, W = 0.404552054388942), p = c(2.82294232819534e-10, 2.9990397774353e-11),
+        p.signif = c("****", "****")
+      ), row.names = c(
+        NA,
+        -2L
+      ), class = c("tbl_df", "tbl", "data.frame"))
+    ), Premium = list(
+      opisowe = structure(list(var = c("carat", "price"), N = c(
+        22L,
+        22L
+      ), M = c(0.293636363636364, 568.681818181818), SD = c(
+        0.124117665161712,
+        498.760214012957
+      ), A = c(3.51653546442931, 4.40482941801487), K = c(14.2228840717044, 20.1647226583006), `NA` = c(
+        0L,
+        0L
+      )), class = c("tbl_df", "tbl", "data.frame"), row.names = c(
+        NA,
+        -2L
+      )), test_shapiro_wilka = structure(list(
+        var = c(
+          "carat",
+          "price"
+        ), statistic = c(W = 0.576809442538064, W = 0.373995759178409), p = c(7.54238609017048e-07, 1.04715478781297e-08),
+        p.signif = c("****", "****")
+      ), row.names = c(
+        NA,
+        -2L
+      ), class = c("tbl_df", "tbl", "data.frame"))
+    ), Ideal = list(
+      opisowe = structure(list(var = c("carat", "price"), N = c(
+        19L,
+        19L
+      ), M = c(0.342105263157895, 692.842105263158), SD = c(
+        0.132395826863086,
+        732.578646756927
+      ), A = c(2.31061403944596, 2.72411131084888), K = c(4.85439212879616, 6.23959406020666), `NA` = c(
+        0L,
+        0L
+      )), class = c("tbl_df", "tbl", "data.frame"), row.names = c(
+        NA,
+        -2L
+      )), test_shapiro_wilka = structure(list(
+        var = c(
+          "carat",
+          "price"
+        ), statistic = c(W = 0.646411681403112, W = 0.464620566340876), p = c(1.36484080505897e-05, 2.47561032589644e-07),
+        p.signif = c("****", "****")
+      ), row.names = c(
+        NA,
+        -2L
+      ), class = c("tbl_df", "tbl", "data.frame"))
+    ))
+  )
+
+  expect_equal(result, expected_result, ignore_attr = TRUE, tolerance = 0.5)
 })

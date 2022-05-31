@@ -31,16 +31,20 @@
 #' @importFrom agricolae skewness kurtosis
 #' @importFrom rstatix add_significance shapiro_test
 #' @importFrom tidyr pivot_longer
+#' @importFrom forcats fct_drop
+#' @import tidyselect
 #'
 #' @examples
 #' statystyki_opisowe(iris, "ilosciowa", Sepal.Width)
-#' statystyki_opisowe(iris, "ilosciowa", where(is.numeric)) # z czasownikiem tidyselect
+#' statystyki_opisowe(iris, "ilosciowa", tidyselect:::where(is.numeric)) # z czasownikiem tidyselect
 #'
 statystyki_opisowe <- function(df, type = c("kategorialna", "porzadkowa", "ilosciowa"), ...) {
   if (!type %in% c("kategorialna", "porzadkowa", "ilosciowa")) stop("Skala mo\u017ce by\u0107 wy\u0142\u0105cznie \"kategorialna\", \"porzadkowa\" albo \"ilosciowa\".")
 
   if (!missing(...)) df_temp <- dplyr::select(df, ...)
   if (missing(...)) df_temp <- df
+
+  df_temp <- mutate(df_temp, across(tidyselect:::where(is.factor), forcats::fct_drop))
 
   if (type == "kategorialna") {
     final <- list(
@@ -105,7 +109,7 @@ statystyki_opisowe <- function(df, type = c("kategorialna", "porzadkowa", "ilosc
   return(final)
 }
 
-#' @describeIn statystyki_opisowe Statystyki opisowe z grupowaniem
+#' @describeIn statystyki_opisowe Statystyki opisowe z grupowaniem.
 #' @param group kolumny ze zmienną grupującą. Podane jako nazwa, ciąg znaków lub wektor tychże.
 #' @export
 #' @examples
@@ -115,8 +119,81 @@ statystyki_opisowe <- function(df, type = c("kategorialna", "porzadkowa", "ilosc
 #' statystyki_opisowe_by(diamonds, "kategorialna", c(cut, clarity), color)
 #'
 statystyki_opisowe_by <- function(df, type = c("kategorialna", "porzadkowa", "ilosciowa"), group, ...) {
+  df <- mutate(df, across(tidyselect:::where(is.factor), forcats::fct_drop))
   group <- vapply(substitute(group), deparse, "vector") # por. vector_to_char()
   if (length(group) > 1) group <- group[2:length(group)]
   split(df, df[group]) |>
     lapply(statystyki_opisowe, type, ...)
+}
+
+#' @describeIn statystyki_opisowe Opisuje całą ramkę danych, użytkownik wskazuje zmienne danego typu.
+#' @return Nazwana lista statystyk opisowych dla zmiennych każdego typu.
+#' @export
+#' @param kategorialne Wektor nazw zmiennych kategorialnych w ramce danych.
+#' @param porzadkowe Wektor nazw zmiennych porządkowych w ramce danych.
+#' @param ilosciowe Wektor nazw zmiennych ilościowych w ramce danych.
+#' @examples
+#' data(diamonds, package = "ggplot2")
+#' opisz(head(diamonds), color, table, c(carat, price))
+#'
+opisz <- function(df, kategorialne, porzadkowe, ilosciowe) {
+  ifelse(
+    missing(kategorialne),
+    wynik_kategorialne <- list(),
+    wynik_kategorialne <- statystyki_opisowe(df = df, type = "kategorialna", {{ kategorialne }})
+  )
+  ifelse(
+    missing(porzadkowe),
+    wynik_porzadkowe <- list(),
+    wynik_porzadkowe <- statystyki_opisowe(df = df, type = "porzadkowa", {{ porzadkowe }})
+  )
+  ifelse(
+    missing(ilosciowe),
+    wynik_kategorialne <- list(),
+    wynik_ilosciowe <- statystyki_opisowe(df = df, type = "ilosciowa", {{ ilosciowe }})
+  )
+  list(
+    kategorialne = wynik_kategorialne,
+    porzadkowe = wynik_porzadkowe,
+    ilosciowe = wynik_ilosciowe
+  )
+}
+
+#' @describeIn statystyki_opisowe Opisuje całą ramkę danych ze zmienną grupującą, użytkownik wskazuje zmienne danego typu.
+#' @return Nazwana lista statystyk opisowych dla zmiennych każdego typu.
+#' @export
+#' @param kategorialne Wektor nazw zmiennych kategorialnych w ramce danych.
+#' @param porzadkowe Wektor nazw zmiennych porządkowych w ramce danych.
+#' @param ilosciowe Wektor nazw zmiennych ilościowych w ramce danych.
+#' @importFrom rlang !! enquo
+#' @examples
+#' data(diamonds, package = "ggplot2")
+#' opisz_by(head(diamonds, 100), cut, color, table, c(carat, price))
+#'
+opisz_by <- function(df, group, kategorialne, porzadkowe, ilosciowe) {
+  df <- mutate(df, across(tidyselect:::where(is.factor), forcats::fct_drop))
+  group <- vapply(substitute(group), deparse, "vector") # por. vector_to_char()
+  if (length(group) > 1) group <- group[2:length(group)]
+  splitted <- split(df, df[group])
+
+  ifelse(
+    missing(kategorialne),
+    wynik_kategorialne <- list(),
+    wynik_kategorialne <- lapply(splitted, statystyki_opisowe, type = "kategorialna", !!enquo(kategorialne))
+  )
+  ifelse(
+    missing(porzadkowe),
+    wynik_porzadkowe <- list(),
+    wynik_porzadkowe <- lapply(splitted, statystyki_opisowe, type = "porzadkowa", !!enquo(porzadkowe))
+  )
+  ifelse(
+    missing(ilosciowe),
+    wynik_kategorialne <- list(),
+    wynik_ilosciowe <- lapply(splitted, statystyki_opisowe, type = "ilosciowa", !!enquo(ilosciowe))
+  )
+  list(
+    kategorialne = wynik_kategorialne,
+    porzadkowe = wynik_porzadkowe,
+    ilosciowe = wynik_ilosciowe
+  )
 }

@@ -102,14 +102,6 @@ Autoreporting in Polish:
 ``` r
 library(jedrusiakr)
 library(dplyr)
-#> 
-#> Dołączanie pakietu: 'dplyr'
-#> Następujące obiekty zostały zakryte z 'package:stats':
-#> 
-#>     filter, lag
-#> Następujące obiekty zostały zakryte z 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 model <- iris %>%
   filter(Species %in% c("setosa", "versicolor")) %>%
   t.test(Petal.Length ~ Species, .)

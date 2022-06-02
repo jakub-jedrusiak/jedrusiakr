@@ -42,7 +42,7 @@ statystyki_opisowe_by(iris, "ilosciowa", Species, where(is.numeric))
 
 Autoreporting in Polish:
 
-```{r autoreporting}
+```{r autoreporting, message=FALSE}
 library(jedrusiakr)
 library(dplyr)
 model <- iris %>%

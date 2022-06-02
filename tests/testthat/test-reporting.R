@@ -58,3 +58,26 @@ test_that("Mann-Whitney test reporting works", {
 test_that("MSD works as expected", {
   expect_equal(jedrusiakr::MSD(iris, Sepal.Length, Species == "setosa"), "$M = 5,01$; $SD = 0,35$")
 })
+
+test_that("ANOVA reporting works as expected", {
+  iris_aov <- aov(Sepal.Length ~ Species, iris)
+  result <- raport_aov(iris_aov, "w zakresie długości płatków u różnych gatunków irysów")
+
+  expected_result <- "Celem sprawdzenia różnic w zakresie długości płatków u różnych gatunków irysów przeprowadzono jednoczynnikową analizę wariancji. Wykazała ona, że istnieją istotne statystycznie różnice ($F (2, 147) = 119,26$; $p < 0,001$)."
+
+  expect_equal(result, expected_result)
+})
+
+test_that("multiway ANOVA reporting errors works as expected", {
+  data("diamonds", package = "ggplot2")
+  diamonds_aov <- aov(price ~ cut + color, diamonds)
+  expect_error(raport_aov(diamonds_aov, "test string"))
+})
+
+test_that("KW test reporting works", {
+  iris_KW <- kruskal.test(Sepal.Length ~ Species, iris)
+  result <- raport_KW(iris_KW, "w zakresie długości płatków u różnych gatunków irysów")
+  expected_result <- "Celem sprawdzenia różnic w zakresie długości płatków u różnych gatunków irysów przeprowadzono nieparametryczny test Kruskala-Wallisa. Wykazał on, że istnieją istotne statystycznie różnice ($\\chi^2 (2) = 96,94$; $p < 0,001$)."
+
+  expect_equal(result, expected_result)
+})

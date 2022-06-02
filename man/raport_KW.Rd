@@ -7,9 +7,9 @@
 raport_KW(kruskaltest, roznic)
 }
 \arguments{
-\item{roznic}{Uzupełnienie zdania "Celem sprawdzenia różnic "}
+\item{kruskaltest}{obiekt testu Kruskala-Wallisa \code{\link[stats]{kruskal.test}}}
 
-\item{kruskal.test}{obiekt testu Kruskala-Wallisa \code{\link[stats]{kruskal.test}}}
+\item{roznic}{Uzupełnienie zdania "Celem sprawdzenia różnic "}
 }
 \value{
 Celem sprawdzenia różnic w zakresie lęku u osób o różnym stopniu obciążenia

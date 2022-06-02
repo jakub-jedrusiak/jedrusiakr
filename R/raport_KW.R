@@ -5,9 +5,9 @@
 #' @export
 #'
 #' @return
-#' Celem sprawdzenia różnic w zakresie lęku u osób o różnym stopniu obciążenia
-#' pracą przeprowadzono jednoczynnikową analizę wariancji. Wykazała ona, że istnieją istotne
-#' różnice (F(2,597) = 5,22; p = 0,006).
+#' Celem sprawdzenia różnic w zakresie długości płatków u różnych gatunków
+#' irysów przeprowadzono nieparametryczny test Kruskala-Wallisa. Wykazał on, że
+#' istnieją istotne statystycznie różnice ($\\chi^2 (2) = 96,94$; $p < 0,001$).
 #'
 #' @param kruskaltest obiekt testu Kruskala-Wallisa \code{\link[stats]{kruskal.test}}
 #' @param roznic Uzupełnienie zdania "Celem sprawdzenia różnic "

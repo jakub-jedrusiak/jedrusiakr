@@ -101,6 +101,18 @@ Autoreporting in Polish:
 
 ``` r
 library(jedrusiakr)
-raport_lm(lm(Sepal.Width ~ Sepal.Length, iris), "między szerokością a długością płatków irysów")
-#> [1] "Celem sprawdzenia zależności między między szerokością a długością płatków irysów przeprowadzono analizę regresji. Model okazał się nieistotny statystycznie ($F(1, 148) = 2,07$; $p = 0,152$)."
+library(dplyr)
+#> 
+#> Dołączanie pakietu: 'dplyr'
+#> Następujące obiekty zostały zakryte z 'package:stats':
+#> 
+#>     filter, lag
+#> Następujące obiekty zostały zakryte z 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+model <- iris %>%
+  filter(Species %in% c("setosa", "versicolor")) %>%
+  t.test(Petal.Length ~ Species, .)
+raport_t(model, "długością płatków u różnych gatunków irysów")
+#> [1] "Celem sprawdzenia istotności różnicy między długością płatków u różnych gatunków irysów wykonano test $t$-Studenta dla prób niezależnych. Test wykazał, że różnica w średnich ($ΔM = 2,8$) między grupami jest istotna statystycznie ($t(62,14) = 39,49$; $p < 0,001$)."
 ```

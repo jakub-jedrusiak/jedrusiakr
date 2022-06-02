@@ -7,18 +7,9 @@
 \alias{opisz_by}
 \title{Statystyki opisowe}
 \usage{
-statystyki_opisowe(
-  df,
-  type = c("kategorialna", "porzadkowa", "ilosciowa"),
-  ...
-)
+statystyki_opisowe(df, type = "ilosciowa", ...)
 
-statystyki_opisowe_by(
-  df,
-  type = c("kategorialna", "porzadkowa", "ilosciowa"),
-  group,
-  ...
-)
+statystyki_opisowe_by(df, type = "ilosciowa", group, ...)
 
 opisz(df, kategorialne, porzadkowe, ilosciowe)
 

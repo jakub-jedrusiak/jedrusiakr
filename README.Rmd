@@ -44,5 +44,9 @@ Autoreporting in Polish:
 
 ```{r autoreporting}
 library(jedrusiakr)
-raport_lm(lm(Sepal.Width ~ Sepal.Length, iris), "między szerokością a długością płatków irysów")
+library(dplyr)
+model <- iris %>%
+  filter(Species %in% c("setosa", "versicolor")) %>%
+  t.test(Petal.Length ~ Species, .)
+raport_t(model, "długością płatków u różnych gatunków irysów")
 ```

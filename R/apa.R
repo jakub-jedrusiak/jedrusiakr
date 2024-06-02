@@ -41,6 +41,8 @@ apa <- function(test_result, pl = TRUE) {
   return(string)
 }
 
+#' @export
+
 apa_aov <- function(anova_model, row_number = 1, pl = TRUE) {
   coeffs <- broom::tidy(anova_model)
   row <- coeffs %>%

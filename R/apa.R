@@ -44,7 +44,7 @@ apa <- function(test_result, pl = TRUE) {
 #' @export
 
 apa_aov <- function(model, row_number = 1, pl = TRUE) {
-  coeffs <- broom::tidy(anova_model)
+  coeffs <- broom::tidy(model)
   row <- coeffs %>%
     slice(row_number)
   df1 <- row %>%
@@ -76,7 +76,7 @@ apa_aov <- function(model, row_number = 1, pl = TRUE) {
 #' @export
 
 apa_lm <- function(model, pl = TRUE) {
-  coeffs <- broom::glance(lm_model)
+  coeffs <- broom::glance(model)
   df1 <- round(coeffs$df, 2)
   df2 <- round(coeffs$df.residual, 2)
   statistic <- round(coeffs$statistic, 2)

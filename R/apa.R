@@ -12,9 +12,11 @@ apa <- function(test_result, pl = TRUE) {
   statistic <- round(test_result$statistic, 2)
   p <- round(test_result$p, 3)
 
-  if (exists("test_result$n")) {
-    n <- test_result$n
-  }
+  suppressWarnings({
+    if (!is.null(test_result$n)) {
+      n <- test_result$n
+    }
+  })
 
   if (pl) {
     df <- format_pl(df)

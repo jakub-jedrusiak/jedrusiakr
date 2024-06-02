@@ -2,8 +2,8 @@
 % Please edit documentation in R/jedrusiakr.R
 \docType{package}
 \name{jedrusiakr}
-\alias{jedrusiakr}
 \alias{jedrusiakr-package}
+\alias{jedrusiakr}
 \title{jedrusiakr: Utilities for Statistics in Psychology}
 \description{
 A set of tools for quick exploration and reporting. The main part consists of

@@ -73,8 +73,9 @@ omitted.}
     \emph{dropped} in this format, unless \code{flag} contains
     \code{"#"}.}
     \item{\code{flag}}{for \code{formatC}, a character string giving a
-    format modifier as in Kernighan and Ritchie (1988, page 243) or the
-    C+99 standard.\describe{
+    format modifier as in
+    Kernighan and Ritchie (1988, page 243) 
+    or the C+99 standard.\describe{
       \item{\code{"0"}}{pads leading zeros;}
       \item{\code{"-"}}{does left adjustment,}
       \item{\code{"+"}}{ensures a sign in all cases, i.e., \code{"+"} for
@@ -120,8 +121,8 @@ Funkcje dostosowujące Papaję do polskich standardów APA.
 }
 \section{Functions}{
 \itemize{
-\item \code{print_p_pl}: Wartość prawdopodobieństwa
+\item \code{print_p_pl()}: Wartość prawdopodobieństwa
 
-\item \code{apa_num_pl}: Liczba
+\item \code{apa_num_pl()}: Liczba
+
 }}
-

@@ -58,13 +58,13 @@ na dodanie zmiennych grupujących.
 }
 \section{Functions}{
 \itemize{
-\item \code{statystyki_opisowe_by}: Statystyki opisowe z grupowaniem.
+\item \code{statystyki_opisowe_by()}: Statystyki opisowe z grupowaniem.
 
-\item \code{opisz}: Opisuje całą ramkę danych, użytkownik wskazuje zmienne danego typu.
+\item \code{opisz()}: Opisuje całą ramkę danych, użytkownik wskazuje zmienne danego typu.
 
-\item \code{opisz_by}: Opisuje całą ramkę danych ze zmienną grupującą, użytkownik wskazuje zmienne danego typu.
+\item \code{opisz_by()}: Opisuje całą ramkę danych ze zmienną grupującą, użytkownik wskazuje zmienne danego typu.
+
 }}
-
 \examples{
 statystyki_opisowe(iris, "ilosciowa", Sepal.Width)
 statystyki_opisowe(iris, "ilosciowa", tidyselect:::where(is.numeric)) # z czasownikiem tidyselect

@@ -20,7 +20,7 @@ cat("# Spacje nierozdzielające w LaTeX
 
 # Poprawka spacji nierozdzielających o polskie znaki (!!! dodać spację po \\1 !!!)
 ([ęóąłżźćń]\\w)\\\\nobreakspace\\{\\}
-\\1 
+\\1
 
 # Zmiana znaku dziesiętnego na przecinki
 (?<=\\d)\\.(?=\\d)

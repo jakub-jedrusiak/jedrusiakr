@@ -17,7 +17,6 @@
 #' @examples
 #' iris_aov <- aov(Sepal.Length ~ Species, iris)
 #' raport_aov(iris_aov, "w zakresie długości płatków u różnych gatunków irysów")
-
 raport_aov <- function(aov, roznic) {
   if (length(aov$xlevels) > 1) stop("Obecnie funkcja wymaga jednocznynnikowej analizy wariancji.")
 

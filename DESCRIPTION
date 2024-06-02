@@ -23,7 +23,7 @@ Imports: dplyr,
     rlang,
     tidyselect
 Remotes: crsh/papaja
-RoxygenNote: 7.2.0
+RoxygenNote: 7.3.1
 Suggests: 
     covr,
     ggplot2,

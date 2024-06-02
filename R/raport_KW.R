@@ -17,9 +17,7 @@
 #' @examples
 #' iris_KW <- kruskal.test(Sepal.Length ~ Species, iris)
 #' raport_KW(iris_KW, "w zakresie długości płatków u różnych gatunków irysów")
-
 raport_KW <- function(kruskaltest, roznic) {
-
   tidy_KW <- broom::tidy(kruskaltest)
   p <- tidy_KW$p.value[[1]]
   df <- tidy_KW$parameter[[1]]

@@ -9,7 +9,8 @@ Depends:
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
-Imports: dplyr,
+Imports: 
+    dplyr,
     psych,
     rstatix,
     tibble,
@@ -21,7 +22,8 @@ Imports: dplyr,
     coin,
     forcats,
     rlang,
-    tidyselect
+    tidyselect,
+    magrittr
 Remotes: crsh/papaja
 RoxygenNote: 7.3.1
 Suggests: 
@@ -30,7 +32,6 @@ Suggests:
     knitr,
     rmarkdown,
     testthat (>= 3.0.0),
-    magrittr,
     stringr
 VignetteBuilder: knitr
 URL: https://github.com/jakub-jedrusiak/jedrusiakr

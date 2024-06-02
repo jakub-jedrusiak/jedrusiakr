@@ -75,13 +75,17 @@ apa_aov <- function(model, row_number = 1, pl = TRUE) {
 
 #' @export
 
-apa_lm <- function(model, pl = TRUE) {
+apa_lm <- function(model, adj_r_sq = TRUE, pl = TRUE) {
   coeffs <- broom::glance(model)
   df1 <- round(coeffs$df, 2)
   df2 <- round(coeffs$df.residual, 2)
   statistic <- round(coeffs$statistic, 2)
   p <- round(coeffs$p.value, 3)
-  R2 <- round(coeffs$adj.r.squared, 3)
+  if (adj_r_sq) {
+    R2 <- round(coeffs$adj.r.squared, 3)
+  } else {
+    R2 <- round(coeffs$r.squared, 3)
+  }
 
   if (pl) {
     df1 <- format_pl(df1)
@@ -89,9 +93,15 @@ apa_lm <- function(model, pl = TRUE) {
     statistic <- format_pl(statistic)
     p <- ifelse(p < 0.001, "p < 0,001", glue::glue("p = {format_pl(p)}"))
     R2 <- format_pl(R2)
+    adj <- "koryg."
   } else {
     p <- ifelse(p < 0.001, "p < .001", glue::glue("p = {p}"))
+    adj <- "adj."
   }
 
-  glue::glue("$F({df1},\\ {df2}) = {statistic}$; ${p}$; $R^2 = {R2}$")
+  if (adj_r_sq) {
+    glue::glue("$F({df1},\\ {df2}) = {statistic}$; ${p}$; $R^2 = {R2}$")
+  } else {
+    glue::glue("$F({df1},\\ {df2}) = {statistic}$; ${p}$; $R^2_{{{adj}}} = {R2}$")
+  }
 }

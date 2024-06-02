@@ -1,28 +1,34 @@
-#' Raportowanie średniej i SD
+#' Report M and SD
 #'
-#' Prosta funkcja drukująca w średnią i SD między znakami dolara. Przydatna do
-#' raportowania niektórych testów.
 #'
-#' @param df \code{\link[base]{data.frame}} lub \code{\link[tibble]{tibble}}
-#' @param var nazwa zmiennej do opisania, bez cudzysłowu
-#' @param ... opcjonalne argumenty przekazywane do funkcji \code{\link[dplyr]{filter}}
+#' @param df data frame
+#' @param column column of which to calculate M and SD
+#' @param group optional grouping variable
 #'
 #' @return Ciąg znaków zgodny z przykładem:
 #' "$M = 5,01$; $SD = 0,35$"
 #' @export
 #'
-#' @importFrom dplyr filter
-#'
 #' @examples
-#' MSD(iris, Sepal.Length)
-#' MSD(iris, Sepal.Length, Species == "setosa")
-#' \dontrun{
-#' MSD(iris, "Sepal.Length", Species == "setosa") # kolumna nie może być w cudzysłowie
-#' }
-MSD <- function(df, var, ...) {
-  var <- deparse(substitute(var))
-  if (!missing(...)) df <- filter(df, ...)
-  M <- mean(df[[var]])
-  SD <- sd(df[[var]])
-  paste0("$M ", apa_num_pl(M), "$; $SD ", apa_num_pl(SD), "$")
+#' msd(iris, Sepal.Length)
+#' msd(iris, Sepal.Length, Species == "setosa")
+msd <- function(df, column, group, pl = TRUE) {
+  column <- rlang::ensym(column)
+  if (missing(group)) {
+    df <- df %>%
+      dplyr::select(!!column)
+  } else {
+    df <- df %>%
+      dplyr::select({{ group }}, !!column) %>%
+      dplyr::filter({{ group }})
+  }
+  df <- df %>%
+    dplyr::summarise(
+      M = round(mean(!!column), 2),
+      SD = round(sd(!!column), 2)
+    )
+  if (pl) {
+    df <- mutate(df, across(where(is.numeric), \(x) format_pl(x)))
+  }
+  with(df, glue::glue("$M = {M}$; $SD = {SD}$"))
 }

@@ -70,5 +70,5 @@ apa_aov <- function(anova_model, row_number = 1, pl = TRUE) {
     p <- ifelse(p < 0.001, "p < .001", glue::glue("p = {p}"))
   }
 
-  glue::glue("$F({df1},\ {df2}) = {statistic}$; ${p}$")
+  glue::glue("$F({df1},\\ {df2}) = {statistic}$; ${p}$")
 }

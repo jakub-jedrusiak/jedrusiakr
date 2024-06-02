@@ -14,6 +14,8 @@ apa(test_result, pl = TRUE)
 \item{model}{a model object}
 
 \item{row_number}{row number of the ANOVA model to report}
+
+\item{adj_r_sq}{if \code{TRUE} then adjusted R-squared is reported}
 }
 \value{
 a string with the APA formatted test result

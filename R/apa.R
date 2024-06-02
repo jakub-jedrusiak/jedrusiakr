@@ -4,6 +4,7 @@
 #' @param pl if `TRUE` then polish format is used
 #' @param model a model object
 #' @param row_number row number of the ANOVA model to report
+#' @param adj_r_sq if `TRUE` then adjusted R-squared is reported
 #'
 #' @return a string with the APA formatted test result
 #' @export
@@ -100,8 +101,8 @@ apa_lm <- function(model, adj_r_sq = TRUE, pl = TRUE) {
   }
 
   if (adj_r_sq) {
-    glue::glue("$F({df1},\\ {df2}) = {statistic}$; ${p}$; $R^2 = {R2}$")
-  } else {
     glue::glue("$F({df1},\\ {df2}) = {statistic}$; ${p}$; $R^2_{{{adj}}} = {R2}$")
+  } else {
+    glue::glue("$F({df1},\\ {df2}) = {statistic}$; ${p}$; $R^2 = {R2}$")
   }
 }

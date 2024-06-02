@@ -2,7 +2,7 @@
 #'
 #' @param test_result a result of a statistical test as returned by a function from the `rstatix` package. Currently supported are `t_test()`, `chisq_test()`.
 #' @param pl if `TRUE` then polish format is used
-#' @param anova_model an ANOVA model as returned by the `aov()` function
+#' @param model a model object
 #' @param row_number row number of the ANOVA model to report
 #'
 #' @return a string with the APA formatted test result
@@ -43,7 +43,7 @@ apa <- function(test_result, pl = TRUE) {
 
 #' @export
 
-apa_aov <- function(anova_model, row_number = 1, pl = TRUE) {
+apa_aov <- function(model, row_number = 1, pl = TRUE) {
   coeffs <- broom::tidy(anova_model)
   row <- coeffs %>%
     slice(row_number)
@@ -60,6 +60,27 @@ apa_aov <- function(anova_model, row_number = 1, pl = TRUE) {
   p <- row %>%
     pull(p.value) %>%
     round(3)
+
+  if (pl) {
+    df1 <- format_pl(df1)
+    df2 <- format_pl(df2)
+    statistic <- format_pl(statistic)
+    p <- ifelse(p < 0.001, "p < 0,001", glue::glue("p = {format_pl(p)}"))
+  } else {
+    p <- ifelse(p < 0.001, "p < .001", glue::glue("p = {p}"))
+  }
+
+  glue::glue("$F({df1},\\ {df2}) = {statistic}$; ${p}$")
+}
+
+#' @export
+
+apa_lm <- function(model, pl = TRUE) {
+  coeffs <- broom::glance(lm_model)
+  df1 <- round(coeffs$df, 2)
+  df2 <- round(coeffs$df.residual, 2)
+  statistic <- round(coeffs$statistic, 2)
+  p <- round(coeffs$p.value, 3)
 
   if (pl) {
     df1 <- format_pl(df1)

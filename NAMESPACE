@@ -3,6 +3,7 @@
 export("%>%")
 export(apa)
 export(apa_aov)
+export(apa_lm)
 export(apa_num_pl)
 export(lower_upper_cor_mat)
 export(msd)

@@ -11,7 +11,7 @@ apa(test_result, pl = TRUE)
 
 \item{pl}{if \code{TRUE} then polish format is used}
 
-\item{anova_model}{an ANOVA model as returned by the \code{aov()} function}
+\item{model}{a model object}
 
 \item{row_number}{row number of the ANOVA model to report}
 }

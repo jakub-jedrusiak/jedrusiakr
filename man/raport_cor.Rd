@@ -7,7 +7,7 @@
 raport_cor(wynik_testu, miedzy, method = "pearson", alpha = 0.05)
 }
 \arguments{
-\item{wynik_testu}{\code{\link[stats]{cor.test}}.}
+\item{wynik_testu}{\code{\link[stats:cor.test]{stats::cor.test()}}.}
 
 \item{miedzy}{character. Uzupełnia zdanie „Przeprowadzono analizę korelacji między XXX.”}
 
@@ -17,8 +17,8 @@ raport_cor(wynik_testu, miedzy, method = "pearson", alpha = 0.05)
 }
 \value{
 Przeprowadzono analizę korelacji Pearsona między masą a ceną
-  brylantu. Test wykazał istnienie istotnej, bardzo wysokiej, dodatniej
-  korelacji między zmiennymi ($r = 0,922$; $p < 0,001$).
+brylantu. Test wykazał istnienie istotnej, bardzo wysokiej, dodatniej
+korelacji między zmiennymi ($r = 0,922$; $p < 0,001$).
 }
 \description{
 Funkcja tworząca automatyczne fragmenty raportu z analizy korelacji.

@@ -20,7 +20,7 @@ opisz_by(df, group, kategorialne, porzadkowe, ilosciowe)
 
 \item{type}{character. Skala pomiarowa. Może być \code{"kategorialna"}, \code{"porzadkowa"} albo \code{"ilosciowa"}.}
 
-\item{...}{tidyselect. Kolumny do opisania. Jeśli nie sprecyzowano, opisywane są wszystkie dostępne kolumny. Można użyć czasowników tidyselect jak \code{\link[dplyr]{starts_with}}.}
+\item{...}{tidyselect. Kolumny do opisania. Jeśli nie sprecyzowano, opisywane są wszystkie dostępne kolumny. Można użyć czasowników tidyselect jak \code{\link[dplyr:reexports]{dplyr::starts_with()}}.}
 
 \item{group}{kolumny ze zmienną grupującą. Podane jako nazwa, ciąg znaków lub wektor tychże.}
 
@@ -33,17 +33,17 @@ opisz_by(df, group, kategorialne, porzadkowe, ilosciowe)
 \value{
 Zwracana jest nazwana lista, której zawartość zależy od skali pomiarowej.
 \describe{
-  \item{kategorialna}{\describe{
-    \item{licznosc}{tabele liczności}
-  }}
-  \item{porządkowa}{\describe{
-    \item{licznosc}{tabele liczności}
-    \item{opisowe}{\code{var} – nazwa zmiennej; \code{N} – liczba obserwacji; \code{Me} – mediana; \code{R} – rozstęp; \code{RQ} – rozstęp ćwiartkowy; \code{VQ} – współczynnik zmienności wzg. mediany; \code{VQ_interp} – interpretacja \code{VQ}; \code{`NA`} – liczba braków danych}
-  }}
-  \item{ilościowa}{\describe{
-    \item{opisowe}{\code{var} – nazwa zmiennej; \code{N} – liczba obserwacji; \code{M} – średnia; \code{SD} – odchylenie standardowe; \code{A} – skośność; \code{K} – kurtoza; \code{`NA`} – liczba braków danych}
-    \item{test_shapiro_wilka}{test normalności Shapiro-Wilka z dodaną istotnością}
-  }}
+\item{kategorialna}{\describe{
+\item{licznosc}{tabele liczności}
+}}
+\item{porządkowa}{\describe{
+\item{licznosc}{tabele liczności}
+\item{opisowe}{\code{var} – nazwa zmiennej; \code{N} – liczba obserwacji; \code{Me} – mediana; \code{R} – rozstęp; \code{RQ} – rozstęp ćwiartkowy; \code{VQ} – współczynnik zmienności wzg. mediany; \code{VQ_interp} – interpretacja \code{VQ}; \code{NA} – liczba braków danych}
+}}
+\item{ilościowa}{\describe{
+\item{opisowe}{\code{var} – nazwa zmiennej; \code{N} – liczba obserwacji; \code{M} – średnia; \code{SD} – odchylenie standardowe; \code{A} – skośność; \code{K} – kurtoza; \code{NA} – liczba braków danych}
+\item{test_shapiro_wilka}{test normalności Shapiro-Wilka z dodaną istotnością}
+}}
 }
 
 Nazwana lista statystyk opisowych dla zmiennych każdego typu.

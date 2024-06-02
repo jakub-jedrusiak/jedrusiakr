@@ -7,7 +7,7 @@
 raport_lm(lm, miedzy, alpha = 0.05)
 }
 \arguments{
-\item{lm}{\code{\link[stats]{lm}}.}
+\item{lm}{\code{\link[stats:lm]{stats::lm()}}.}
 
 \item{miedzy}{character. Uzupełnia zdanie „Celem sprawdzenia zależności między XXX.”}
 
@@ -16,7 +16,7 @@ raport_lm(lm, miedzy, alpha = 0.05)
 \value{
 Celem sprawdzenia zależności między masą brylantu a jego ceną, przeprowadzono
 analizę regresji. Model okazał się istotny statystycznie (F(1;53938) = 30410; p < 0,001)
-i wyjaśnia 85% wariancji.
+i wyjaśnia 85\% wariancji.
 }
 \description{
 Funkcja tworząca automatyczne fragmenty raportu z analizy regresji.

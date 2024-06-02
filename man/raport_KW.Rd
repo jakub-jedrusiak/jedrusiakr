@@ -7,7 +7,7 @@
 raport_KW(kruskaltest, roznic)
 }
 \arguments{
-\item{kruskaltest}{obiekt testu Kruskala-Wallisa \code{\link[stats]{kruskal.test}}}
+\item{kruskaltest}{obiekt testu Kruskala-Wallisa \code{\link[stats:kruskal.test]{stats::kruskal.test()}}}
 
 \item{roznic}{Uzupełnienie zdania "Celem sprawdzenia różnic "}
 }

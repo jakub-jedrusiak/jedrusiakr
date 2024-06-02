@@ -2,7 +2,7 @@
 #'
 #' Funkcja tworząca automatyczne fragmenty raportu z analizy regresji.
 #'
-#' @param lm \code{\link[stats]{lm}}.
+#' @param lm [stats::lm()].
 #' @param miedzy character. Uzupełnia zdanie „Celem sprawdzenia zależności między XXX.”
 #' @param alpha numeric. Punkt odcięcia dla istotności statystycznej.
 #'

@@ -7,9 +7,9 @@
 apa(test_result, pl = TRUE)
 }
 \arguments{
-\item{test_result}{a result of a statistical test as returned by a function from the `rstatix` package. Currently supported are `t_test()`, `chisq_test()`.}
+\item{test_result}{a result of a statistical test as returned by a function from the \code{rstatix} package. Currently supported are \code{t_test()}, \code{chisq_test()}.}
 
-\item{pl}{if `TRUE` then polish format is used}
+\item{pl}{if \code{TRUE} then polish format is used}
 }
 \value{
 a string with the APA formatted test result

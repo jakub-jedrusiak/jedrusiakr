@@ -7,5 +7,5 @@
 papaja.terms_pl()
 }
 \description{
-Tłumaczenia terminów z pakietu \link[papaja]{papaja} na polski i funkcja je aplikująca.
+Tłumaczenia terminów z pakietu \link[papaja:papaja]{papaja} na polski i funkcja je aplikująca.
 }

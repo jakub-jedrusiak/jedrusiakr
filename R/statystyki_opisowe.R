@@ -1,13 +1,13 @@
 #' Statystyki opisowe
 #'
 #' Zestaw podstawowych statystyk dla danego typu skali pomiarowej, zgodny z
-#' wymaganiami prowadzących. \code{statystyki_opisowe} służy do opisu całych
-#' sprecyzowanych kolumn. \code{statystyki_opisowe_by} robi to samo, ale pozwala
+#' wymaganiami prowadzących. `statystyki_opisowe` służy do opisu całych
+#' sprecyzowanych kolumn. `statystyki_opisowe_by` robi to samo, ale pozwala
 #' na dodanie zmiennych grupujących.
 #'
 #' @param df data.frame lub tibble. Zbiór danych.
-#' @param type character. Skala pomiarowa. Może być \code{"kategorialna"}, \code{"porzadkowa"} albo \code{"ilosciowa"}.
-#' @param ... tidyselect. Kolumny do opisania. Jeśli nie sprecyzowano, opisywane są wszystkie dostępne kolumny. Można użyć czasowników tidyselect jak \code{\link[dplyr]{starts_with}}.
+#' @param type character. Skala pomiarowa. Może być `"kategorialna"`, `"porzadkowa"` albo `"ilosciowa"`.
+#' @param ... tidyselect. Kolumny do opisania. Jeśli nie sprecyzowano, opisywane są wszystkie dostępne kolumny. Można użyć czasowników tidyselect jak [dplyr::starts_with()].
 #'
 #' @return Zwracana jest nazwana lista, której zawartość zależy od skali pomiarowej.
 #' \describe{
@@ -16,10 +16,10 @@
 #'   }}
 #'   \item{porządkowa}{\describe{
 #'     \item{licznosc}{tabele liczności}
-#'     \item{opisowe}{\code{var} – nazwa zmiennej; \code{N} – liczba obserwacji; \code{Me} – mediana; \code{R} – rozstęp; \code{RQ} – rozstęp ćwiartkowy; \code{VQ} – współczynnik zmienności wzg. mediany; \code{VQ_interp} – interpretacja \code{VQ}; \code{`NA`} – liczba braków danych}
+#'     \item{opisowe}{`var` – nazwa zmiennej; `N` – liczba obserwacji; `Me` – mediana; `R` – rozstęp; `RQ` – rozstęp ćwiartkowy; `VQ` – współczynnik zmienności wzg. mediany; `VQ_interp` – interpretacja `VQ`; ``NA`` – liczba braków danych}
 #'   }}
 #'   \item{ilościowa}{\describe{
-#'     \item{opisowe}{\code{var} – nazwa zmiennej; \code{N} – liczba obserwacji; \code{M} – średnia; \code{SD} – odchylenie standardowe; \code{A} – skośność; \code{K} – kurtoza; \code{`NA`} – liczba braków danych}
+#'     \item{opisowe}{`var` – nazwa zmiennej; `N` – liczba obserwacji; `M` – średnia; `SD` – odchylenie standardowe; `A` – skośność; `K` – kurtoza; ``NA`` – liczba braków danych}
 #'     \item{test_shapiro_wilka}{test normalności Shapiro-Wilka z dodaną istotnością}
 #'   }}
 #' }

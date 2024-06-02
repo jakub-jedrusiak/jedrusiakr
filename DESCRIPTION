@@ -36,3 +36,4 @@ VignetteBuilder: knitr
 URL: https://github.com/jakub-jedrusiak/jedrusiakr
 BugReports: https://github.com/jakub-jedrusiak/jedrusiakr/issues
 Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)

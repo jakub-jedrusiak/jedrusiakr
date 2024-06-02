@@ -1,18 +1,18 @@
 #' Łączenie macierzy korelacji
 #'
-#' \code{lower_upper_cor_mat} łączy dwie macierze korelacji tak, że jedna połowa
+#' `lower_upper_cor_mat` łączy dwie macierze korelacji tak, że jedna połowa
 #' jest pod przekątną, a druga nad przekątną. Użyteczne w raportowaniu. W
-#' przeciwieństwie do klasycznego \code{\link[psych]{lowerUpper}}, ta
-#' obsługuje obiekt typu \code{\link[rstatix]{cor_mat}}.
+#' przeciwieństwie do klasycznego [psych::lowerUpper()], ta
+#' obsługuje obiekt typu [rstatix::cor_mat()].
 #'
 #' @param lower cor_mat. Macierz dolna.
 #' @param upper cor_mat. Macierz górna.
 #' @param signif logical. Jeśli TRUE, dodaje gwiazdki na oznaczenie istotności.
 #'
-#' @return Zwraca obiekt typu \code{\link[tibble]{tibble}}.
+#' @return Zwraca obiekt typu [tibble::tibble()].
 #' @export
 #'
-#' @seealso \code{\link[psych]{lowerUpper}}, \code{\link[rstatix]{cor_mat}}
+#' @seealso [psych::lowerUpper()], [rstatix::cor_mat()]
 #'
 #' @import tibble
 #' @importFrom rstatix cor_mark_significant

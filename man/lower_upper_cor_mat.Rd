@@ -14,13 +14,13 @@ lower_upper_cor_mat(lower, upper, signif = TRUE)
 \item{signif}{logical. Jeśli TRUE, dodaje gwiazdki na oznaczenie istotności.}
 }
 \value{
-Zwraca obiekt typu \code{\link[tibble]{tibble}}.
+Zwraca obiekt typu \code{\link[tibble:tibble]{tibble::tibble()}}.
 }
 \description{
 \code{lower_upper_cor_mat} łączy dwie macierze korelacji tak, że jedna połowa
 jest pod przekątną, a druga nad przekątną. Użyteczne w raportowaniu. W
-przeciwieństwie do klasycznego \code{\link[psych]{lowerUpper}}, ta
-obsługuje obiekt typu \code{\link[rstatix]{cor_mat}}.
+przeciwieństwie do klasycznego \code{\link[psych:lowerUpper]{psych::lowerUpper()}}, ta
+obsługuje obiekt typu \code{\link[rstatix:cor_mat]{rstatix::cor_mat()}}.
 }
 \examples{
 library(dplyr)
@@ -39,5 +39,5 @@ r_mat_virginica <- iris \%>\%
 lower_upper_cor_mat(r_mat_setosa, r_mat_virginica)
 }
 \seealso{
-\code{\link[psych]{lowerUpper}}, \code{\link[rstatix]{cor_mat}}
+\code{\link[psych:lowerUpper]{psych::lowerUpper()}}, \code{\link[rstatix:cor_mat]{rstatix::cor_mat()}}
 }

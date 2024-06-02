@@ -2,7 +2,7 @@
 #'
 #' Funkcja tworząca automatyczne fragmenty raportu z analizy korelacji.
 #'
-#' @param wynik_testu \code{\link[stats]{cor.test}}.
+#' @param wynik_testu [stats::cor.test()].
 #' @param miedzy character. Uzupełnia zdanie „Przeprowadzono analizę korelacji między XXX.”
 #' @param alpha numeric. Punkt odcięcia dla istotności statystycznej.
 #' @param method character. Rodzaj korelacji – "pearson" albo "spearman"

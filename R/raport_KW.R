@@ -9,7 +9,7 @@
 #' irysów przeprowadzono nieparametryczny test Kruskala-Wallisa. Wykazał on, że
 #' istnieją istotne statystycznie różnice ($\\chi^2 (2) = 96,94$; $p < 0,001$).
 #'
-#' @param kruskaltest obiekt testu Kruskala-Wallisa \code{\link[stats]{kruskal.test}}
+#' @param kruskaltest obiekt testu Kruskala-Wallisa [stats::kruskal.test()]
 #' @param roznic Uzupełnienie zdania "Celem sprawdzenia różnic "
 #'
 #' @importFrom broom tidy

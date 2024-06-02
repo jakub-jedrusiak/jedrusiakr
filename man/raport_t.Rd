@@ -7,7 +7,7 @@
 raport_t(wynik_testu, miedzy, alpha = 0.05)
 }
 \arguments{
-\item{wynik_testu}{\code{\link[stats]{t.test}}.}
+\item{wynik_testu}{\code{\link[stats:t.test]{stats::t.test()}}.}
 
 \item{miedzy}{character. Uzupełnia zdanie „Celem sprawdzenia istotności różnicy między XXX.”}
 
@@ -15,9 +15,9 @@ raport_t(wynik_testu, miedzy, alpha = 0.05)
 }
 \value{
 Celem sprawdzenia istotności różnicy między długością płatków u
-  różnych gatunków irysów wykonano test t-Studenta dla prób niezależnych.
-  Test wykazał, że różnica w średnich (ΔM = 2,798) między grupami jest
-  istotna statystycznie (t(62,1) = 39,5; p < 0,001).
+różnych gatunków irysów wykonano test t-Studenta dla prób niezależnych.
+Test wykazał, że różnica w średnich (ΔM = 2,798) między grupami jest
+istotna statystycznie (t(62,1) = 39,5; p < 0,001).
 }
 \description{
 Funkcja tworząca automatyczne fragmenty raportu z testu t-Studenta.

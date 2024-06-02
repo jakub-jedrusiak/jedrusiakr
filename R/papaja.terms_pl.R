@@ -1,6 +1,6 @@
 #' papaja.terms_pl
 #'
-#' Tłumaczenia terminów z pakietu \link[papaja]{papaja} na polski i funkcja je aplikująca.
+#' Tłumaczenia terminów z pakietu [papaja][papaja::papaja] na polski i funkcja je aplikująca.
 #' @import papaja
 #' @export
 

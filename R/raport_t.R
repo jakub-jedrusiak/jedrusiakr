@@ -2,7 +2,7 @@
 #'
 #' Funkcja tworząca automatyczne fragmenty raportu z testu t-Studenta.
 #'
-#' @param wynik_testu \code{\link[stats]{t.test}}.
+#' @param wynik_testu [stats::t.test()].
 #' @param miedzy character. Uzupełnia zdanie „Celem sprawdzenia istotności różnicy między XXX.”
 #' @param alpha numeric. Punkt odcięcia dla istotności statystycznej.
 #'

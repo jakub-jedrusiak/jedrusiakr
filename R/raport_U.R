@@ -2,7 +2,7 @@
 #'
 #' Funkcja tworząca automatyczne fragmenty raportu z testu U Manna-Whitneya.
 #'
-#' @param wynik_testu \code{\link[coin:wilcox_test]{coin::wilcox_test}}.
+#' @param wynik_testu [coin::wilcox_test()].
 #' @param miedzy character. Uzupełnia zdanie „Celem sprawdzenia istotności różnicy między XXX.”
 #' @param alpha numeric. Punkt odcięcia dla istotności statystycznej.
 #'

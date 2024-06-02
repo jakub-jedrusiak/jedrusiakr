@@ -7,7 +7,7 @@
 raport_U(wynik_testu, miedzy, alpha = 0.05)
 }
 \arguments{
-\item{wynik_testu}{\code{\link[coin:wilcox_test]{coin::wilcox_test}}.}
+\item{wynik_testu}{\code{\link[coin:LocationTests]{coin::wilcox_test()}}.}
 
 \item{miedzy}{character. Uzupełnia zdanie „Celem sprawdzenia istotności różnicy między XXX.”}
 
@@ -15,8 +15,8 @@ raport_U(wynik_testu, miedzy, alpha = 0.05)
 }
 \value{
 Celem sprawdzenia istotności różnicy między długością płatków u
-  różnych gatunków irysów wykonano test U Manna-Whitneya. Test wykazał, że
-  różnica jest istotna statystycznie (Z = -7,468; p < 0,001).
+różnych gatunków irysów wykonano test U Manna-Whitneya. Test wykazał, że
+różnica jest istotna statystycznie (Z = -7,468; p < 0,001).
 }
 \description{
 Funkcja tworząca automatyczne fragmenty raportu z testu U Manna-Whitneya.

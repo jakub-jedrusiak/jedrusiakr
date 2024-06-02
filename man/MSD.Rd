@@ -2,29 +2,21 @@
 % Please edit documentation in R/MSD.R
 \name{MSD}
 \alias{MSD}
-\title{Raportowanie średniej i SD}
+\title{Report M and SD}
 \usage{
-MSD(df, var, ...)
+MSD(df, column, group)
 }
 \arguments{
-\item{df}{\code{\link[base]{data.frame}} lub \code{\link[tibble]{tibble}}}
-
 \item{var}{nazwa zmiennej do opisania, bez cudzysłowu}
-
-\item{...}{opcjonalne argumenty przekazywane do funkcji \code{\link[dplyr]{filter}}}
 }
 \value{
 Ciąg znaków zgodny z przykładem:
 "$M = 5,01$; $SD = 0,35$"
 }
 \description{
-Prosta funkcja drukująca w średnią i SD między znakami dolara. Przydatna do
-raportowania niektórych testów.
+Report M and SD
 }
 \examples{
 MSD(iris, Sepal.Length)
 MSD(iris, Sepal.Length, Species == "setosa")
-\dontrun{
-MSD(iris, "Sepal.Length", Species == "setosa") # kolumna nie może być w cudzysłowie
-}
 }

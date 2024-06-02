@@ -81,15 +81,17 @@ apa_lm <- function(model, pl = TRUE) {
   df2 <- round(coeffs$df.residual, 2)
   statistic <- round(coeffs$statistic, 2)
   p <- round(coeffs$p.value, 3)
+  R2 <- round(coeffs$adj.r.squared, 3)
 
   if (pl) {
     df1 <- format_pl(df1)
     df2 <- format_pl(df2)
     statistic <- format_pl(statistic)
     p <- ifelse(p < 0.001, "p < 0,001", glue::glue("p = {format_pl(p)}"))
+    R2 <- format_pl(R2)
   } else {
     p <- ifelse(p < 0.001, "p < .001", glue::glue("p = {p}"))
   }
 
-  glue::glue("$F({df1},\\ {df2}) = {statistic}$; ${p}$")
+  glue::glue("$F({df1},\\ {df2}) = {statistic}$; ${p}$; $R^2 = {R2}$")
 }

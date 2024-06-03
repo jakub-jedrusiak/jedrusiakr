@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/jakub-jedrusiak/jedrusiakr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/jakub-jedrusiak/jedrusiakr?branch=master)
 <!-- badges: end -->
 
-A set of tools for quick exploration and reporting. The main part consists of functions used to calculate basic descriptive statistics and normality checks (mainly `opisz()` and `opisz_by()`). The types of descriptives reported are different for different types of measurement scales (nominal, ordinal and continous). The package also includes a set of functions for autoreporting (`raport_()`) that take a model and returns an example of analysis description in Polish (see *Example* below). For the time being, the package and its documentation are written only in Polish.
+A set of tools for quick exploration and reporting.
 
 ## Installation
 
@@ -29,24 +29,4 @@ You can install the development version of jedrusiakr from [GitHub](https://gith
 ``` r
 # install.packages("devtools")
 devtools::install_github("jakub-jedrusiak/jedrusiakr")
-```
-
-## Example
-
-Summary statistics:
-
-```{r summary-statistics}
-library(jedrusiakr)
-statystyki_opisowe_by(iris, "ilosciowa", Species, where(is.numeric))
-```
-
-Autoreporting in Polish:
-
-```{r autoreporting, message=FALSE}
-library(jedrusiakr)
-library(dplyr)
-model <- iris %>%
-  filter(Species %in% c("setosa", "versicolor")) %>%
-  t.test(Petal.Length ~ Species, .)
-raport_t(model, "długością płatków u różnych gatunków irysów")
 ```

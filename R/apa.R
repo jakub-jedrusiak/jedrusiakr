@@ -42,6 +42,8 @@ apa <- function(test_result, pl = TRUE) {
   return(string)
 }
 
+#' @title Report ANOVA
+#' @description Report ANOVA model parameters
 #' @export
 
 apa_aov <- function(model, row_number = 1, pl = TRUE) {

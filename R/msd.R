@@ -12,15 +12,16 @@
 #' @examples
 #' msd(iris, Sepal.Length)
 #' msd(iris, Sepal.Length, Species == "setosa")
-msd <- function(df, column, group, pl = TRUE) {
+msd <- function(df, column, filter, pl = TRUE) {
   column <- rlang::ensym(column)
-  if (missing(group)) {
+  filter <- rlang::enquo(filter)
+  if (missing(filter)) {
     df <- df %>%
       dplyr::select(!!column)
   } else {
     df <- df %>%
-      dplyr::select({{ group }}, !!column) %>%
-      dplyr::filter({{ group }})
+      dplyr::filter(!!filter) %>%
+      dplyr::select(!!column)
   }
   df <- df %>%
     dplyr::summarise(

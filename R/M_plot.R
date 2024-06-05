@@ -13,15 +13,16 @@
 #'
 #' @examples
 M_plot <- function(df, group, col, x_labels, xlab = NULL, ylab = NULL, nudge_y = -1, fill = "#1E88E5") {
-  df %>%
+  df <- df %>%
     dplyr::group_by({{ group }}) %>%
     dplyr::summarise(
       m = mean({{ col }}, na.rm = TRUE),
       sd = sd({{ col }}, na.rm = TRUE),
       n = n(),
       se = sd / sqrt(n)
-    ) %>%
-  ggplot2::ggplot(M, aes(!!parse_expr(colnames(M)[1]), m)) +
+    )
+
+  ggplot2::ggplot(df, aes(!!parse_expr(colnames(df)[1]), m)) +
     ggplot2::geom_col(fill = fill) +
     ggplot2::geom_label(aes(label = format(round(m, 1), decimal.mark = ","), nudge_y = nudge_y)) +
     ggplot2::geom_errorbar(aes(ymin = m - 1.96 * se, ymax = m + 1.96 * se), width = 0.3) +

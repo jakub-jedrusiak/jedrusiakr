@@ -6,6 +6,8 @@
 #' @name jedrusiakr
 #'
 #' @import dplyr
+#' @import rlang
+#' @import ggplot2
 #' @importFrom stats sd quantile median
 
 "_PACKAGE"

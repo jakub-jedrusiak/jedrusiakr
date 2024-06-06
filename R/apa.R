@@ -16,14 +16,14 @@ apa <- function(test_result, pl = TRUE) {
   statistic <- round(test_result$statistic, 2)
   p <- round(test_result$p, 3)
   n <- test_result$n
-  effsize <- round(test_result$effsize, 3)
+  effsize <- ifelse(!is.null(test_result$effsize), round(test_result$effsize, 3), NULL)
   })
 
   if (pl) {
     df <- format_pl(df)
     statistic <- format_pl(statistic)
     p <- ifelse(p < 0.001, "p < 0,001", glue::glue("p = {format_pl(p)}"))
-    effsize <- format_pl(effsize)
+    if (!is.null(effsize)) effsize <- format_pl(effsize)
   } else {
     p <- ifelse(p < 0.001, "p < .001", glue::glue("p = {p}"))
   }

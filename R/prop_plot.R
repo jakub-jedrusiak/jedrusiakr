@@ -40,6 +40,6 @@ prop_plot <- function(freq_df, legend_title, x = 1, order = FALSE, xlab = NULL, 
       panel.grid.minor = element_blank(),
       panel.grid.major.y = element_blank(),
       legend.position = "bottom",
-      !!!...
+      ...
     )
 }

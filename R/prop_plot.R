@@ -32,7 +32,7 @@ prop_plot <- function(freq_df, legend_title, x = 1, order = FALSE, xlab = NULL, 
       y = ylab
     ) +
     scale_y_continuous(labels = scales::label_percent()) +
-    scale_fill_brewer(fill_palette, name = legend_title) +
+    scale_fill_brewer(palette = fill_palette, name = legend_title) +
     coord_flip() +
     theme_minimal() +
     theme(

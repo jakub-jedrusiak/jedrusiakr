@@ -11,20 +11,19 @@
 #'
 
 apa <- function(test_result, pl = TRUE) {
+  suppressWarnings({
   df <- round(test_result$df, 2)
   statistic <- round(test_result$statistic, 2)
   p <- round(test_result$p, 3)
-
-  suppressWarnings({
-    if (!is.null(test_result$n)) {
-      n <- test_result$n
-    }
+  n <- test_result$n
+  effsize <- round(test_result$effsize, 3)
   })
 
   if (pl) {
     df <- format_pl(df)
     statistic <- format_pl(statistic)
     p <- ifelse(p < 0.001, "p < 0,001", glue::glue("p = {format_pl(p)}"))
+    effsize <- format_pl(effsize)
   } else {
     p <- ifelse(p < 0.001, "p < .001", glue::glue("p = {p}"))
   }
@@ -32,6 +31,7 @@ apa <- function(test_result, pl = TRUE) {
   string <- case_when(
     "chisq_test" %in% class(test_result) ~ glue::glue("$\\chi^2({df},\\ N = {n}) = {statistic}$; ${p}$"),
     "t_test" %in% class(test_result) ~ glue::glue("$t({df}) = {statistic}$; ${p}$"),
+    "cohens_d" %in% class(test_result) ~ glue::glue("$d = {effsize}$"),
     .default = "ERROR"
   )
 

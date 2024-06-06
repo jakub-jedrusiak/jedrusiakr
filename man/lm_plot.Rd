@@ -4,7 +4,16 @@
 \alias{lm_plot}
 \title{Plot for linear regression}
 \usage{
-lm_plot(df, x, y, xlab, ylab)
+lm_plot(
+  df,
+  x,
+  y,
+  ...,
+  xlab = NULL,
+  ylab = NULL,
+  line_colour = "#1E88E5",
+  point_colour = "#9ECAE1"
+)
 }
 \arguments{
 \item{df}{a data frame}
@@ -12,6 +21,8 @@ lm_plot(df, x, y, xlab, ylab)
 \item{x}{variable for x axis}
 
 \item{y}{variable for y axis}
+
+\item{...}{<\code{\link[rlang:dyn-dots]{dynamic-dots}}> additional arguments to pass to \code{aes()}}
 
 \item{xlab}{label for x axis}
 

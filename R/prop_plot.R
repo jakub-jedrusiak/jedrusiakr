@@ -17,7 +17,7 @@ prop_plot <- function(freq_df, legend_title, x = 1, order = FALSE, xlab = NULL, 
     arrange(group) %>%
     mutate(
       group = str_wrap(group, 20) %>%
-        fct_inorder(group)
+        fct_inorder()
     )
 
   if (order) {

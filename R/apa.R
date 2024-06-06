@@ -111,7 +111,7 @@ apa_lm <- function(model, adj_r_sq = TRUE, pl = TRUE) {
 }
 
 apa_d <- function(test_result, pl = TRUE) {
-  effsize <- abs(test_result$effsize)
+  effsize <- round(abs(test_result$effsize), 3)
 
   small <- effsize < 0.001
   if (pl) effsize <- format_pl(effsize)

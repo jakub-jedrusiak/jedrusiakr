@@ -15,23 +15,27 @@ apa <- function(test_result, pl = TRUE) {
   df <- round(test_result$df, 2)
   statistic <- round(test_result$statistic, 2)
   p <- round(test_result$p, 3)
-  n <- test_result$n
-  effsize <- ifelse(!is.null(test_result$effsize), round(test_result$effsize, 3), NULL)
+  n <- ifelse(is.null(test_result$n), NA, test_result$n)
+  effsize <- ifelse(is.null(test_result$effsize), NA, test_result$effsize)
   })
+
+  if (!is.na(effsize)) {
+    effsize <- round(effsize, 3)
+  }
 
   if (pl) {
     df <- format_pl(df)
     statistic <- format_pl(statistic)
     p <- ifelse(p < 0.001, "p < 0,001", glue::glue("p = {format_pl(p)}"))
-    if (!is.null(effsize)) effsize <- format_pl(effsize)
+    if (!is.na(effsize)) effsize <- format_pl(effsize)
   } else {
     p <- ifelse(p < 0.001, "p < .001", glue::glue("p = {p}"))
   }
 
   string <- case_when(
-    "chisq_test" %in% class(test_result) ~ glue::glue("$\\chi^2({df},\\ N = {n}) = {statistic}$; ${p}$"),
     "t_test" %in% class(test_result) ~ glue::glue("$t({df}) = {statistic}$; ${p}$"),
     "cohens_d" %in% class(test_result) ~ glue::glue("$d = {effsize}$"),
+    "chisq_test" %in% class(test_result) ~ glue::glue("$\\chi^2({df},\\ N = {n}) = {statistic}$; ${p}$"),
     .default = "ERROR"
   )
 

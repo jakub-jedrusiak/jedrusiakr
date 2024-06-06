@@ -121,6 +121,6 @@ apa_d <- function(test_result, pl = TRUE) {
   } else if (small & !pl) {
     return("d < .001")
   } else {
-    return(glue::glue("d = {effsize}"))
+    return(glue::glue("$d = {effsize}$"))
   }
 }

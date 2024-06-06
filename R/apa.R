@@ -111,15 +111,15 @@ apa_lm <- function(model, adj_r_sq = TRUE, pl = TRUE) {
 }
 
 apa_d <- function(test_result, pl = TRUE) {
-  effsize <- test_result$effsize
+  effsize <- abs(test_result$effsize)
 
-  small <- abs(effsize) < 0.001
+  small <- effsize < 0.001
   if (pl) effsize <- format_pl(effsize)
 
   if (small & pl) {
-    return("$|d| < 0,001$")
+    return("$d < 0,001$")
   } else if (small & !pl) {
-    return("$|d| < .001$")
+    return("$d < .001$")
   } else {
     return(glue::glue("$d = {effsize}$"))
   }

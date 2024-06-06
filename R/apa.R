@@ -11,30 +11,27 @@
 #'
 
 apa <- function(test_result, pl = TRUE) {
+  if ("cohens_d" %in% class(test_result)) {
+    return(apa_d(test_result, pl))
+  }
+
   suppressWarnings({
   df <- round(test_result$df, 2)
   statistic <- round(test_result$statistic, 2)
   p <- round(test_result$p, 3)
   n <- ifelse(is.null(test_result$n), NA, test_result$n)
-  effsize <- ifelse(is.null(test_result$effsize), NA, test_result$effsize)
   })
-
-  if (!is.na(effsize)) {
-    effsize <- round(effsize, 3)
-  }
 
   if (pl) {
     df <- format_pl(df)
     statistic <- format_pl(statistic)
     p <- ifelse(p < 0.001, "p < 0,001", glue::glue("p = {format_pl(p)}"))
-    if (!is.na(effsize)) effsize <- format_pl(effsize)
   } else {
     p <- ifelse(p < 0.001, "p < .001", glue::glue("p = {p}"))
   }
 
   string <- case_when(
     "t_test" %in% class(test_result) ~ glue::glue("$t({df}) = {statistic}$; ${p}$"),
-    "cohens_d" %in% class(test_result) ~ glue::glue("$d = {effsize}$"),
     "chisq_test" %in% class(test_result) ~ glue::glue("$\\chi^2({df},\\ N = {n}) = {statistic}$; ${p}$"),
     .default = "ERROR"
   )
@@ -110,5 +107,20 @@ apa_lm <- function(model, adj_r_sq = TRUE, pl = TRUE) {
     glue::glue("$F({df1},\\ {df2}) = {statistic}$; ${p}$; $R^2_{{{adj}}} = {R2}$")
   } else {
     glue::glue("$F({df1},\\ {df2}) = {statistic}$; ${p}$; $R^2 = {R2}$")
+  }
+}
+
+apa_d <- function(test_result, pl = TRUE) {
+  effsize <- test_result$effsize
+
+  small <- effsize < 0.001
+  if (pl) effsize <- format_pl(effsize)
+
+  if (small & pl) {
+    return("d < 0,001")
+  } else if (small & !pl) {
+    return("d < .001")
+  } else {
+    return(glue::glue("d = {effsize}"))
   }
 }

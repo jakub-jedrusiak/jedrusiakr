@@ -8,12 +8,15 @@
 #' @param ylab y-axis label
 #' @param fill column fill colour
 #' @param color column outline colour
+#' @param angle x-axis text angle
+#' @param hjust x-axis text horizontal justification (between 0 and 1)
+#' @param vjust x-axis text vertical justification (between 0 and 1)
 #'
 #' @return
 #' @export
 #'
 #' @examples
-ohe_col_plot <- function(df, col, cols_to_delete = NULL, ..., xlab = NULL, ylab = NULL, fill = "#6BAED5", colour = "#2171B5") {
+ohe_col_plot <- function(df, col, cols_to_delete = NULL, ..., xlab = NULL, ylab = NULL, fill = "#6BAED5", colour = "#2171B5", angle = 90, hjust = 1, vjust = 0.5) {
   require(rlang)
   col <- enquo(col)
   col_name <- expr_text(col) %>%
@@ -47,7 +50,7 @@ ohe_col_plot <- function(df, col, cols_to_delete = NULL, ..., xlab = NULL, ylab 
     ) +
     theme_minimal() +
     theme(
-      axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1),
+      axis.text.x = element_text(angle = angle, vjust = vjust, hjust = hjust),
       panel.grid.minor = element_blank(),
       panel.grid.major.x = element_blank()
     )

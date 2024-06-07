@@ -12,7 +12,10 @@ ohe_col_plot(
   xlab = NULL,
   ylab = NULL,
   fill = "#6BAED5",
-  colour = "#2171B5"
+  colour = "#2171B5",
+  angle = 90,
+  hjust = 1,
+  vjust = 0.5
 )
 }
 \arguments{
@@ -29,6 +32,12 @@ ohe_col_plot(
 \item{ylab}{y-axis label}
 
 \item{fill}{column fill colour}
+
+\item{angle}{x-axis text angle}
+
+\item{hjust}{x-axis text horizontal justification (between 0 and 1)}
+
+\item{vjust}{x-axis text vertical justification (between 0 and 1)}
 
 \item{color}{column outline colour}
 }

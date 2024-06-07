@@ -4,7 +4,16 @@
 \alias{ohe_col_plot}
 \title{One Hot Encoding Column Plot}
 \usage{
-ohe_col_plot(df, col, cols_to_delete = NULL, ..., xlab = NULL, ylab = NULL)
+ohe_col_plot(
+  df,
+  col,
+  cols_to_delete = NULL,
+  ...,
+  xlab = NULL,
+  ylab = NULL,
+  fill = "#6BAED5",
+  colour = "#2171B5"
+)
 }
 \arguments{
 \item{df}{dataframe}
@@ -18,6 +27,10 @@ ohe_col_plot(df, col, cols_to_delete = NULL, ..., xlab = NULL, ylab = NULL)
 \item{xlab}{x-axis label}
 
 \item{ylab}{y-axis label}
+
+\item{fill}{column fill colour}
+
+\item{color}{column outline colour}
 }
 \description{
 One Hot Encoding Column Plot

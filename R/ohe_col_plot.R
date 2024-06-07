@@ -6,12 +6,14 @@
 #' @param ... "new" = "old" column rename pairs
 #' @param xlab x-axis label
 #' @param ylab y-axis label
+#' @param fill column fill colour
+#' @param color column outline colour
 #'
 #' @return
 #' @export
 #'
 #' @examples
-ohe_col_plot <- function(df, col, cols_to_delete = NULL, ..., xlab = NULL, ylab = NULL) {
+ohe_col_plot <- function(df, col, cols_to_delete = NULL, ..., xlab = NULL, ylab = NULL, fill = "#6BAED5", colour = "#2171B5") {
   require(rlang)
   col <- enquo(col)
   col_name <- expr_text(col) %>%
@@ -36,7 +38,7 @@ ohe_col_plot <- function(df, col, cols_to_delete = NULL, ..., xlab = NULL, ylab 
       prop = (n / nrow) * 100
     ) %>%
     ggplot(aes(name, prop)) +
-    geom_col(fill = "#74C476", colour = "#006D2C") +
+    geom_col(fill = fill, colour = colour) +
     geom_label(aes(label = paste0(format(round(prop, 1), decimal.mark = ","), "%"))) +
     scale_y_continuous(labels = scales::percent_format(scale = 1)) +
     labs(

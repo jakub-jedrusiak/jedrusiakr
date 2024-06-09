@@ -13,5 +13,6 @@ cat_kable(list)
 cat names in a list as kable calls
 }
 \examples{
-cat_kable(list(a = mtcars, b = iris))
+my_list <- list(a = mtcars, b = iris)
+cat_kable(my_list)
 }

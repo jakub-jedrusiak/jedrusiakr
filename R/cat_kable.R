@@ -6,10 +6,11 @@
 #' @export
 #'
 #' @examples
-#' cat_kable(list(a = mtcars, b = iris))
+#' my_list <- list(a = mtcars, b = iris)
+#' cat_kable(my_list)
 cat_kable <- function(list) {
   if (!rlang::is_named(list)) cli::cli_abort("`list` must be named")
-  object <- rlang::get_expr(list)
+  object <- deparse(substitute(list))
   for (name in names(list)) {
     cat(glue::glue("kable({object}[[\"{name}\"]])"), sep = "\n")
   }

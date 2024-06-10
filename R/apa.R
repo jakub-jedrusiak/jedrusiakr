@@ -110,6 +110,8 @@ apa_lm <- function(model, adj_r_sq = TRUE, pl = TRUE) {
   }
 }
 
+#' @export
+
 apa_d <- function(test_result, pl = TRUE) {
   effsize <- round(abs(test_result$effsize), 3)
 

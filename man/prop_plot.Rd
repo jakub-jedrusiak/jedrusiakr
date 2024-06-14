@@ -34,5 +34,5 @@ prop_plot(
 ggplot object, a plot of proportions summed to 100\%, horizontal
 }
 \description{
-Proportions plot
+Percent stacked bar plot with labels. Should be exported with \code{width = 12} and \code{height = 4}.
 }

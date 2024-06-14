@@ -1,5 +1,7 @@
 #' Proportions plot
 #'
+#' Percent stacked bar plot with labels. Should be exported with `width = 12` and `height = 4`.
+#'
 #' @param freq_df a df returned by `freq_table()`
 #' @param legend_title title for the legend
 #' @param x column to use for x axis
@@ -17,7 +19,13 @@ prop_plot <- function(freq_df, legend_title, x = 1, order = FALSE, xlab = NULL, 
     arrange(group) %>%
     mutate(
       group = str_wrap(group, 20) %>%
-        fct_inorder()
+        fct_inorder(),
+      cumsum = cumsum(prop),
+      center = (lag(cumsum, default = 0) + cumsum) / 2,
+      label = case_when(
+        prop >= 5 ~ paste0(str_trim(format(round(prop, 1), decimal.mark = ","), side = "both"), "%"),
+        .default = NULL
+      )
     )
 
   if (order) {
@@ -27,6 +35,7 @@ prop_plot <- function(freq_df, legend_title, x = 1, order = FALSE, xlab = NULL, 
   freq_df %>%
     ggplot(aes(x = {{ x }}, y = prop, fill = group)) +
     geom_col(position = position_fill(reverse = TRUE)) +
+    geom_label(aes(label = label), fill = "white", position = position_fill(reverse = TRUE, vjust = 0.5)) +
     labs(
       x = xlab,
       y = ylab

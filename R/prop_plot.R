@@ -18,19 +18,23 @@ prop_plot <- function(freq_df, legend_title, x = 1, order = FALSE, xlab = NULL, 
   freq_df <- freq_df %>%
     arrange(group) %>%
     mutate(
-      group = str_wrap(group, 20) %>%
-        fct_inorder(),
+      group = stringr::str_wrap(group, 20) %>%
+        forcats::fct_inorder(),
       cumsum = cumsum(prop),
       center = (lag(cumsum, default = 0) + cumsum) / 2,
       label = case_when(
-        prop >= 5 ~ paste0(str_trim(format(round(prop, 1), decimal.mark = ","), side = "both"), "%"),
+        prop >= 5 ~ paste0(stringr::str_trim(format(round(prop, 1), decimal.mark = ","), side = "both"), "%"),
         .default = NULL
       )
     )
 
   if (order) {
-    freq_df <- mutate(freq_df, group = fct_reorder(group, -n))
+    freq_df <- mutate(freq_df, group = fct_reorder(group, -n)) %>%
+      arrange(group)
   }
+
+  freq_df <- freq_df %>%
+    mutate(label = forcats::fct_inorder(label))
 
   freq_df %>%
     ggplot(aes(x = {{ x }}, y = prop, fill = group)) +
